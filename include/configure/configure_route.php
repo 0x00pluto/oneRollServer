@@ -10,8 +10,7 @@ if (!function_exists('app_route')) {
             "api.cooking.com" => "",
             "apiphone.cooking.com" => "",
             "apiphone1.cooking.com" => "",
-            "apicooking.tomatofuns.com" => "",
-            "apicooking.tomatofuns1.com" => "",
+            "oneroll.tomatofuns.com" => "",
             "gmtools.tomatofuns.com" => "",
             "test.tomatofuns.com" => "",
             //苹果验证服务器
