@@ -1,0 +1,25 @@
+#数据说明:
+className: property
+DBType: dataCell
+# parent: 
+#TableName: chef_property
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: cookingability, type: int, comment: 烹饪能力, readonly: false}
+    - { name: chinesefood, type: int, comment: 中餐, readonly: false}
+    - { name: westernfood, type: int, comment: 西餐加成, readonly: false}
+    - { name: japenesefood, type: int, comment: 日料加成, readonly: false}
+    - { name: frenchfood, type: int, comment: 法餐加成, readonly: false}
+    - { name: ideafood, type: int, comment: 创意餐加成, readonly: false}

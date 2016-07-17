@@ -1,0 +1,6 @@
+className: roleFriend
+DBType: dataCell
+datas:
+    - { name: roleName, type: string, defaultValue: "a", readonly: true,comment: 用户名 }
+    - { name: UserId, type: string, readonly: false,comment: 用户ID }
+    - { name: isNew, type: bool, comment: 是否是新用户}

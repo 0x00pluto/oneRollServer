@@ -1,0 +1,23 @@
+#数据说明:
+className: handbookData
+DBType: dataCell
+# parent: 
+#TableName: disheshandbook_handbookData
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: dishesId, type: int, comment: 图鉴菜品ID, readonly: false}
+    - { name: cooktimes, type: int, comment: 烹饪了多少次, readonly: false}
+    - { name: isComplete, type: bool, comment: 是否已经完成了图鉴, readonly: false}
+    - { name: completeTimespan, type: int, comment: 完成图鉴的时间, readonly: false}

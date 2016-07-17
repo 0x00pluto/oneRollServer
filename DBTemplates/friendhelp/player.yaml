@@ -1,0 +1,25 @@
+#数据说明:好友帮忙数据
+className: player
+DBType: playerDB
+# parent: 
+TableName: friendhelps
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#access: 0 默认为0 ,0:可读写 1:只读 2:只写 3:内部访问
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: todayRecvHelpCount, type: int, comment: 今天接到的帮忙的次数, access: 0}
+    - { name: todayHelpCount, type: int, comment: 今天帮忙的总次数, access: 0}
+    - { name: todayHelpList, type: array, comment: 今天帮忙列表, access: 0}
+    - { name: helpedCookingTables, type: array, comment: 正在被帮助的烹饪台列表, access: 0}
+    - { name: helpedDinnerTables, type: array, comment: 正在被帮助的餐台列表, access: 0}
+    - { name: helpedExpand, type: array, comment: 正在被帮助的扩建列表, access: 0}

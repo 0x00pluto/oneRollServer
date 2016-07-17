@@ -1,0 +1,10 @@
+<?php
+
+namespace err;
+
+class err_service_customvisitor_harvestawarditem extends err_dbs_custom_visitor_harvestawarditem {
+}
+class err_service_customvisitor_accpetmission extends err_dbs_custom_visitor_accpetmission {
+}
+class err_service_customvisitor_awardGoodwillLevelupPackage extends err_dbs_custom_goodwill_awardGoodwillLevelupPackage {
+}

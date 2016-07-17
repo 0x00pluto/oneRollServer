@@ -1,0 +1,22 @@
+#数据说明:
+className: normal
+DBType: dataCell
+parent: item.itemData
+#TableName: item_normal
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: warehousepos, type: string, comment: 道具在仓库中的位置, readonly: false}
+    - { name: itemowneruserid, type: string, comment: 道具拥有者, readonly: false}
+    - { name: itemFromInfo, type: array, comment: 道具来源信息, access: 2}

@@ -1,0 +1,24 @@
+#数据说明:厨师体力数据
+className: vitdata
+DBType: dataCell
+# parent: 
+#TableName: chef_vitdata
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: vit, type: int, comment: 厨师体力, readonly: false}
+    - { name: vitmax, type: int, comment: 体力上限, readonly: false}
+    - { name: todayfillvitcount, type: int, comment: 今日厨师补充体力次数, readonly: false}
+    - { name: lastfillvitday, type: int, comment: 上次补充体力的日期, readonly: false}
+    - { name: lastfillvittime, type: int, comment: 上次补充体力的自然增长时间, readonly: false}

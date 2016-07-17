@@ -1,0 +1,26 @@
+className: recommenddata
+DBType: playerDB
+TableName: friend_recommenddata
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: lastlogintime, type: int ,comment: 最后一次登录时间 }
+    - { name: sex, type: int ,comment: 性别 }
+    - { name: restaurantlevel, type: int ,comment: 餐厅等级 }
+    - { name: setheadicon, type: int ,comment: 是否设置头像 }
+    - { name: friendcount, type: int ,comment: 好友数量 }
+    - { name: isDeleteAccount, type: bool ,comment: 是否删除账号 }
+    - { name: birthday, type: string ,comment: 出生日期 ,defaultValue: "1970-1-1"}
+    - { name: isPublishingItemGraftAdvertisement, type: bool ,comment: 是否发送了道具嫁接广告 }
+    - { name: isPublishingTrainChefAdvertisement, type: bool ,comment: 是否发送了双休广告 }

@@ -1,0 +1,7 @@
+<?php
+
+namespace err;
+class err_service_warehouseequipment_removeitembypos extends err_dbs_warehousebase_removeitem {
+}
+class err_service_warehouseequipment_removeitemtosell extends err_dbs_warehousebase_removeitemtosell {
+}

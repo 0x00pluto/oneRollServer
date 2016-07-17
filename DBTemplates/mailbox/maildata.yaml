@@ -1,0 +1,41 @@
+#数据说明:邮件数据
+className: maildata
+DBType: dataCell
+# parent: 
+#TableName: mailbox_maildata
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: mailid, type: string, comment: 邮件id, readonly: false}
+    - { name: mailType, type: string, comment: 邮件大类型, readonly: false}
+    - { name: mailSubtype, type: string, comment: 邮件子类型, readonly: false}
+    - { name: title, type: string, comment: 标题, readonly: false}
+    - { name: customContent, type: string, comment: 用户自定义内容, readonly: false}
+    - { name: mailStandardId, type: string, comment: "标准邮件ID,从000008中获取,为空就显示customContent内容", access: 1}
+    - { name: mailStandardVariables, type: array, comment: "标准邮件的变量", access: 1}
+    - { name: hasAttachment, type: bool, comment: 是否包含附件,附件内容包括游戏币钻石和道具, readonly: false}
+    - { name: receivedAttachments, type: bool, comment: 是否已经领取了附件, readonly: false}
+    - { name: attachmentGamecoin, type: int, comment: 游戏币, readonly: false}
+    - { name: attachmentDiamond, type: int, comment: 钻石, readonly: false}
+    - { name: attachmentitems, type: array, comment: 附加道具, readonly: false}
+    - { name: sendTime, type: int, comment: 邮件发送时间, readonly: false}
+    - { name: expiredTime, type: int, comment: 邮件过期时间, access: 1}
+    - { name: isRead, type: bool, comment: 邮件是否已读, readonly: false}
+    - { name: hasAttachaction, type: bool, comment: 是否有附加操作, readonly: false}
+    - { name: attachactionId, type: string, comment: 附加操作guid, readonly: false}
+    - { name: attachactionEndtime, type: int, comment: 附加操作结束时间, readonly: false}
+    - { name: attachactionType, type: string, comment: 附加操作类型, readonly: false}
+    - { name: attachactionValue, type: mixed, comment: 附加操作值, readonly: false}
+    - { name: fromUserid, type: string, comment: 发用用户ID, readonly: false}
+    - { name: fromUserinfo, type: array, comment: 发送者用户信息, readonly: false}

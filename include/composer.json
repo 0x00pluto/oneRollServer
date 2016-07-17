@@ -1,0 +1,29 @@
+{
+  "autoload": {
+    "psr-4": {
+      "":"",
+      "hellaEngine\\": "hellaEngine"
+    },
+    "files": [
+      "functions/functions.php",
+      "configure/configure_load.php"
+    ],
+    "classmap":[
+      "err",
+      "hellaEngine/err",
+      "apps/payverify/err"
+    ]
+  },
+  "require": {
+    "symfony/event-dispatcher": "2.7.1",
+    "monolog/monolog": "1.13.1",
+    "brandonwamboldt/utilphp": "^1.1",
+    "nikic/php-parser": "^1.4",
+    "symfony/yaml": "^2.7",
+    "symfony/stopwatch": "^2.7",
+    "symfony/class-loader": "^2.7",
+    "qiniu/php-sdk": "^7.0",
+    "symfony/routing": "^2.7",
+    "hella-engine/rpc-message": "^1.0"
+  }
+}

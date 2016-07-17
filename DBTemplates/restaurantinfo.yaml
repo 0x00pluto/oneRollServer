@@ -1,0 +1,24 @@
+className: restaurantinfo
+DBType: playerDB
+# parent: 
+TableName: restaurant
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: restaurantlevel, type: int, comment: 餐厅等级, defaultValue: 1, readonly: false}
+    - { name: restaurantexp, type: int, comment: 餐厅校验, readonly: false}
+    - { name: restauranttotalexp, type: int, comment: 餐厅总校验, readonly: false}
+    - { name: customs, type: int, comment: 客流量, readonly: false}
+    - { name: customvips, type: int, comment: 特殊顾客客流量, readonly: false}
+    - { name: recvRestaurantAwardLevel, type: int, comment: 领取到升级奖励的等级,defaultValue: 1, readonly: false}

@@ -1,0 +1,25 @@
+className: base
+DBType: playerDB
+# parent: 
+#TableName: shopmaterial_base
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: level, type: int, comment: 等级, readonly: false ,defaultValue: 1}
+#    - { name: last_buymallid, type: string, comment: 最后一次购买商品ID, readonly: false}
+#    - { name: last_buyitemid, type: string, comment: 最后一次购买的道具ID, readonly: false}
+#    - { name: last_buyitemcount, type: int, comment: 最后一次购买的道具数量, readonly: false}
+    - { name: shopid, type: string, comment: 商店ID, readonly: false}
+#    - { name: exist_goods, type: bool, comment: 是否已经存在购买中的道具, readonly: false}
+#    - { name: cooldowntime, type: int, comment: 冷却时间, readonly: false}

@@ -1,0 +1,9 @@
+className: photoalbum
+DBType: playerDB
+TableName: photoalbum
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+datas:
+    - { name: albumlist, type: array, readonly: true,comment: 用户相册 }

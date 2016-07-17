@@ -1,0 +1,27 @@
+className: groupgiftpackagedata
+DBType: dataCell
+# parent: 
+#TableName: neighbourhood_groupgiftpackagedata
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: guid, type: string, comment: 红包id, readonly: false}
+    - { name: expiretime, type: int, comment: 过期时间, readonly: false}
+    - { name: eachgamecoin, type: int, comment: 每份包含的游戏币数量, readonly: false}
+    - { name: eachdiamond, type: int, comment: 每份包含的钻石数量, readonly: false}
+    - { name: recvmaxtimes, type: int, comment: 可以领取的总数, readonly: false}
+    - { name: recvtimes, type: int, comment: 目前领取次数, readonly: false}
+    - { name: recvuserlist, type: array, comment: 领取用户列表, readonly: false}
+    - { name: owneruserid, type: string, comment: 发送红包的人, readonly: false}
+    - { name: gitfitemid, type: string, comment: 红包的道具id, readonly: false}

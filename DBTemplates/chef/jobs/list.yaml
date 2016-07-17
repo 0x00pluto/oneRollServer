@@ -1,0 +1,24 @@
+#数据说明:
+className: list
+DBType: playerDB
+# parent: 
+TableName: chef_jobs
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: job1Chefs, type: array, comment: 厨师列表, readonly: false}
+    - { name: job2Chefs, type: array, comment: 收银员列表, readonly: false}
+    - { name: job3Chefs, type: array, comment: 迎宾列表, readonly: false}
+    - { name: job4Chefs, type: array, comment: 服务员列表, readonly: false}
+    - { name: totalCharms, type: array, comment: "分职业魅力值,key:职业ID,value:值", access: 1}

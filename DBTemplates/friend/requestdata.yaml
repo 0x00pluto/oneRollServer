@@ -1,0 +1,22 @@
+className: requestdata
+DBType: dataCell
+# parent: 
+#TableName: friend_requestdata
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: fromuserid, type: string, comment: 来源用户ID, readonly: false}
+    - { name: touserid, type: string, comment: 目的用户ID, readonly: false}
+    - { name: timespan, type: int, comment: 发送时间, readonly: false}
+    - { name: requestguid, type: string, comment: 请求ID, readonly: false}

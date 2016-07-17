@@ -1,0 +1,24 @@
+#数据说明:
+className: data
+DBType: dataCell
+# parent: 
+#TableName: sync_data
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#access: 0 默认为0 ,0:可读写 1:只读 2:只写 3:内部访问
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: type, type: string, comment: 同步类型, access: 0}
+    - { name: key, type: string, comment: 同步关键字, access: 0}
+    - { name: message, type: array, comment: 同步消息, access: 0}
+    - { name: classname, type: string, comment: 同步类名, access: 0}
+    - { name: functionname, type: string, comment: 同步函数名称, access: 0}

@@ -1,0 +1,116 @@
+<?php
+namespace configdata;
+/**
+* gen by zeus.php
+*/
+class configdata_item_uselogic_setting {
+const k_id = "id";
+const k_uselogicid = "uselogicid";
+const k_useparam0 = "useparam0";
+const k_useparam1 = "useparam1";
+const k_useparam2 = "useparam2";
+const k_useparam3 = "useparam3";
+private static $_data = NULL;
+public static function data() {
+if (is_null ( self::$_data )) {
+self::$_data = [
+['id'=>'205001','uselogicid'=>'2','useparam0'=>'20001'],
+['id'=>'205002','uselogicid'=>'2','useparam0'=>'20002'],
+['id'=>'205003','uselogicid'=>'2','useparam0'=>'20003'],
+['id'=>'211001','uselogicid'=>'4','useparam0'=>'101'],
+['id'=>'211002','uselogicid'=>'4','useparam0'=>'201'],
+['id'=>'211003','uselogicid'=>'4','useparam0'=>'301'],
+['id'=>'211004','uselogicid'=>'5','useparam0'=>'30000'],
+['id'=>'211005','uselogicid'=>'5','useparam0'=>'30004'],
+['id'=>'211008','uselogicid'=>'5','useparam0'=>'30002'],
+['id'=>'211009','uselogicid'=>'5','useparam0'=>'30003'],
+['id'=>'211010','uselogicid'=>'5','useparam0'=>'30001'],
+['id'=>'211011','uselogicid'=>'5','useparam0'=>'30005'],
+['id'=>'211012','uselogicid'=>'5','useparam0'=>'30006'],
+['id'=>'211013','uselogicid'=>'5','useparam0'=>'30007'],
+['id'=>'211014','uselogicid'=>'5','useparam0'=>'30008'],
+['id'=>'211015','uselogicid'=>'5','useparam0'=>'30009'],
+['id'=>'211016','uselogicid'=>'5','useparam0'=>'30010'],
+['id'=>'211017','uselogicid'=>'5','useparam0'=>'30011'],
+['id'=>'209001','uselogicid'=>'6','useparam0'=>'6'],
+['id'=>'209002','uselogicid'=>'7','useparam0'=>'1000'],
+['id'=>'205004','uselogicid'=>'2','useparam0'=>'20004'],
+['id'=>'205005','uselogicid'=>'2','useparam0'=>'20005'],
+['id'=>'205006','uselogicid'=>'2','useparam0'=>'20006'],
+['id'=>'205007','uselogicid'=>'2','useparam0'=>'20007'],
+['id'=>'205008','uselogicid'=>'2','useparam0'=>'20008'],
+['id'=>'205009','uselogicid'=>'2','useparam0'=>'20009'],
+['id'=>'205010','uselogicid'=>'2','useparam0'=>'20010'],
+['id'=>'205011','uselogicid'=>'2','useparam0'=>'20011'],
+['id'=>'205012','uselogicid'=>'2','useparam0'=>'20012'],
+['id'=>'205013','uselogicid'=>'2','useparam0'=>'20013'],
+['id'=>'205014','uselogicid'=>'2','useparam0'=>'20014'],
+['id'=>'205015','uselogicid'=>'2','useparam0'=>'20015'],
+['id'=>'205016','uselogicid'=>'2','useparam0'=>'20016'],
+['id'=>'205017','uselogicid'=>'2','useparam0'=>'20017'],
+['id'=>'205018','uselogicid'=>'2','useparam0'=>'20018'],
+['id'=>'205019','uselogicid'=>'2','useparam0'=>'20019'],
+['id'=>'205020','uselogicid'=>'2','useparam0'=>'20020'],
+['id'=>'205021','uselogicid'=>'2','useparam0'=>'20021'],
+['id'=>'205022','uselogicid'=>'2','useparam0'=>'20022'],
+['id'=>'205023','uselogicid'=>'2','useparam0'=>'20023'],
+['id'=>'205024','uselogicid'=>'2','useparam0'=>'20024'],
+['id'=>'205025','uselogicid'=>'2','useparam0'=>'20025'],
+['id'=>'205026','uselogicid'=>'2','useparam0'=>'20026'],
+['id'=>'205027','uselogicid'=>'2','useparam0'=>'20027'],
+['id'=>'205028','uselogicid'=>'2','useparam0'=>'20028'],
+['id'=>'205029','uselogicid'=>'2','useparam0'=>'20029'],
+['id'=>'205030','uselogicid'=>'2','useparam0'=>'20030'],
+['id'=>'205031','uselogicid'=>'2','useparam0'=>'20031'],
+['id'=>'205032','uselogicid'=>'2','useparam0'=>'20032'],
+['id'=>'205033','uselogicid'=>'2','useparam0'=>'20033'],
+['id'=>'205034','uselogicid'=>'2','useparam0'=>'20034'],
+['id'=>'205035','uselogicid'=>'2','useparam0'=>'20035'],
+['id'=>'205036','uselogicid'=>'2','useparam0'=>'20036'],
+['id'=>'205037','uselogicid'=>'2','useparam0'=>'20037'],
+['id'=>'205038','uselogicid'=>'2','useparam0'=>'20038'],
+['id'=>'205039','uselogicid'=>'2','useparam0'=>'20039'],
+['id'=>'205040','uselogicid'=>'2','useparam0'=>'20040'],
+['id'=>'205041','uselogicid'=>'2','useparam0'=>'20041'],
+['id'=>'205042','uselogicid'=>'2','useparam0'=>'20042'],
+['id'=>'205043','uselogicid'=>'2','useparam0'=>'20043'],
+['id'=>'205044','uselogicid'=>'2','useparam0'=>'20044'],
+['id'=>'205045','uselogicid'=>'2','useparam0'=>'20045'],
+['id'=>'205046','uselogicid'=>'2','useparam0'=>'20046'],
+['id'=>'205047','uselogicid'=>'2','useparam0'=>'20047'],
+['id'=>'205048','uselogicid'=>'2','useparam0'=>'20048'],
+['id'=>'205049','uselogicid'=>'2','useparam0'=>'20049'],
+['id'=>'205050','uselogicid'=>'2','useparam0'=>'20050'],
+['id'=>'205051','uselogicid'=>'2','useparam0'=>'20051'],
+['id'=>'205052','uselogicid'=>'2','useparam0'=>'20052'],
+['id'=>'205053','uselogicid'=>'2','useparam0'=>'20053'],
+['id'=>'205054','uselogicid'=>'2','useparam0'=>'20054'],
+['id'=>'205055','uselogicid'=>'2','useparam0'=>'20055'],
+['id'=>'205056','uselogicid'=>'2','useparam0'=>'20056'],
+['id'=>'205057','uselogicid'=>'2','useparam0'=>'20057'],
+['id'=>'205058','uselogicid'=>'2','useparam0'=>'20058'],
+['id'=>'205059','uselogicid'=>'2','useparam0'=>'20059'],
+['id'=>'205060','uselogicid'=>'2','useparam0'=>'20060'],
+['id'=>'205061','uselogicid'=>'2','useparam0'=>'20061'],
+['id'=>'205062','uselogicid'=>'2','useparam0'=>'20062'],
+['id'=>'205063','uselogicid'=>'2','useparam0'=>'20063'],
+['id'=>'205064','uselogicid'=>'2','useparam0'=>'20064'],
+['id'=>'205065','uselogicid'=>'2','useparam0'=>'20065'],
+['id'=>'205066','uselogicid'=>'2','useparam0'=>'20066'],
+['id'=>'205067','uselogicid'=>'2','useparam0'=>'20067'],
+['id'=>'205068','uselogicid'=>'2','useparam0'=>'20068'],
+['id'=>'205069','uselogicid'=>'2','useparam0'=>'20069'],
+['id'=>'205070','uselogicid'=>'2','useparam0'=>'20070'],
+['id'=>'205071','uselogicid'=>'2','useparam0'=>'20071'],
+['id'=>'205072','uselogicid'=>'2','useparam0'=>'20072'],
+['id'=>'205073','uselogicid'=>'2','useparam0'=>'20073'],
+['id'=>'205074','uselogicid'=>'2','useparam0'=>'20074'],
+['id'=>'205075','uselogicid'=>'2','useparam0'=>'20075'],
+['id'=>'205076','uselogicid'=>'2','useparam0'=>'20076'],
+['id'=>'205077','uselogicid'=>'2','useparam0'=>'20077'],
+['id'=>'205078','uselogicid'=>'2','useparam0'=>'20078']
+];
+}
+ return self::$_data;
+}
+}

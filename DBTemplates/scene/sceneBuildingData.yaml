@@ -1,0 +1,27 @@
+#数据说明:场景建筑数据
+className: sceneBuildingData
+DBType: dataCell
+# parent: 
+#TableName: scene_sceneBuildingData
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: guid, type: string, comment: 唯一ID, readonly: false}
+    - { name: themeRestaurantId, type: int, comment: 主题餐厅ID, readonly: true}
+    - { name: templateItemId, type: string, comment: 装饰道具ID, readonly: false}
+    - { name: x, type: int, comment: x坐标, readonly: false}
+    - { name: y, type: int, comment: y坐标, readonly: false}
+    - { name: direct, type: int, comment: 方向, readonly: false}
+    - { name: cells, type: array, comment: 实际占地坐标, readonly: false}
+    - { name: extendInfo, type: array, comment: 扩展信息, readonly: false}

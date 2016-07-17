@@ -1,0 +1,27 @@
+#数据说明:培训请求加入数据
+className: trainserviceTrainJoinRequestData
+DBType: dataCell
+#parent: chef.trainserviceTrainData
+#TableName: chef_trainserviceTrainJoinRequestData
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: requestId, type: string, comment: 请求的唯一ID, readonly: false}
+    - { name: userid, type: string, comment: 用户ID, readonly: false}
+    - { name: userinfo, type: array, comment: 用户简要信息, readonly: false}
+    - { name: chefid, type: string, comment: 厨师ID, readonly: false}
+    - { name: chefinfo, type: array, comment: 厨师简要信息, readonly: false}
+    - { name: giftDiamond, type: int, comment: 聘礼钻石, readonly: false}
+    - { name: giftGamecoin, type: int, comment: 聘礼游戏币, readonly: false}
+    - { name: requestTime, type: int, comment: 请求时间, readonly: false}

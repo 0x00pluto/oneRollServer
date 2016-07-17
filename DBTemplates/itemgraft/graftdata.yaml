@@ -1,0 +1,36 @@
+className: graftdata
+DBType: dataCell
+# parent: 
+#TableName: itemgraft_graftdata
+#数据类型
+#playerDB:寄生于用户本身的数据 需要继承使用
+#globalDB:全局DB 需要继承使用
+#dataCell:纯数据操作单元,可独立使用
+#
+# - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
+#name:字段名称
+#type:支持数据类型 int=0 string="" array=[] bool=false
+#readonly: false 默认为false ,当true的时候 setter 为 protected
+#comment:为字段注释
+#defaultValue:默认值
+#
+#更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
+datas:
+    - { name: slotid, type: string, comment: 槽位位置, readonly: false}
+    - { name: slotStatus, type: int, comment: "槽位状态,0:空闲,1:等待另一半,2:合成中,3:合成完成", readonly: false}
+    - { name: itemid1, type: string, comment: 道具ID1, readonly: false}
+    - { name: itemcount1, type: int, comment: 道具数量1, readonly: false}
+    - { name: itemid2, type: string, comment: 道具ID2, readonly: false}
+    - { name: itemcount2, type: int, comment: 道具数量2, readonly: false}
+    - { name: answerPlayerInfos, type: array, comment: 应答嫁接请求的人群信息, readonly: false}
+    - { name: helpPlayerInfo, type: array, comment: 帮忙的人得信息, readonly: false}
+    - { name: formulaid, type: int, comment: 配方id, readonly: false ,defaultValue: -1}
+    - { name: preparetime, type: int, comment: 准备时间, readonly: false}
+    - { name: finishtime, type: int, comment: 冷却时间, readonly: false}
+    - { name: resultaddweightinfo0, type: array, comment: 结果1加成详细信息, readonly: false}
+    - { name: resultaddweightinfo1, type: array, comment: 结果2加成详细信息, readonly: false}
+    - { name: resultaddweightinfo2, type: array, comment: 结果3加成详细信息, readonly: false}
+    - { name: resultaddweightinfo3, type: array, comment: 结果3加成详细信息, readonly: false}
+    - { name: publishAdvertisement, type: bool, comment: 是否发布了广告, readonly: false}
+    - { name: AdvertisementId, type: string, comment: 广告ID, readonly: false}
+    - { name: AdvertisementExpiredTime, type: int, comment: 广告过期时间, access: 0}
