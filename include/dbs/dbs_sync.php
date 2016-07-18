@@ -45,9 +45,9 @@ class dbs_sync extends dbs_templates_sync_player
         if (!$this->db_owner->isMasterPlayer()) {
             return false;
         }
-        if ($this->db_owner->dbs_robot_player()->get_isrobot()) {
-            return false;
-        }
+//        if ($this->db_owner->dbs_robot_player()->get_isrobot()) {
+//            return false;
+//        }
         if (empty ($this->hot_sync_messages)) {
             return false;
         }
@@ -209,9 +209,9 @@ class dbs_sync extends dbs_templates_sync_player
         if (!$this->db_owner->isMasterPlayer()) {
             return FALSE;
         }
-        if ($this->db_owner->dbs_robot_player()->get_isrobot()) {
-            return FALSE;
-        }
+//        if ($this->db_owner->dbs_robot_player()->get_isrobot()) {
+//            return FALSE;
+//        }
         $need = Common_Db_memcached::getInstance()->get($this->_sync_key());
         if ($need) {
             return TRUE;

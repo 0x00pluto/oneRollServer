@@ -4,7 +4,7 @@
 C ( configure_constants::APP_NAMESPACE, "" );
 C ( configure_constants::HTDOCS_PATH, dirname ( dirname ( dirname ( __FILE__ ) ) ) . "/htdocs/" );
 C ( configure_constants::INCLUDE_PATH, dirname ( dirname ( __FILE__ ) ) . '/' );
-C ( configure_constants::LOG_PATH, dirname ( dirname ( dirname ( dirname ( __FILE__ ) ) ) ) . "/www_logs/" );
+C ( configure_constants::LOG_PATH,  dirname ( dirname ( dirname ( __FILE__ )  ) ) . "/www_logs/" );
 C ( configure_constants::DEBUG, false );
 C ( configure_constants::DUMP_ENABLE, false );
 C ( configure_constants::PHP_PROFILE, false );

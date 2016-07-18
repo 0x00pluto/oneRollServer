@@ -19,10 +19,7 @@ datas:
     - { name: rolename, type: string, comment: 用户昵称, readonly: false}
     - { name: job, type: int, comment: 职业, readonly: false}
     - { name: sex, type: int, comment: 性别(0男1女), readonly: false}
-    - { name: gamecoin, type: int, comment: 游戏币, access: 1}
     - { name: diamond, type: int, comment: 钻石数量, access: 1}
-    - { name: reputation, type: int, comment: 声望值, access: 1}
-    - { name: reputationAmount, type: int, comment: 可以增加的声望剩余值, readonly: true}
     - { name: gmlevel, type: int, comment: GM等级, readonly: false}
     - { name: create_time, type: int, comment: 创建日期, readonly: false, defaultValue: time()}
     - { name: lastest_logintime, type: int, comment: 最后一次登录日期, readonly: false}
@@ -34,6 +31,4 @@ datas:
     - { name: sign, type: string, comment: 签名, readonly: false}
     - { name: interests, type: string, comment: 兴趣, readonly: false}
     - { name: headiconurl, type: string, comment: 头像链接, readonly: false}
-    - { name: addgamecoins, type: int, comment: 历史增加游戏币数量, readonly: false}
     - { name: zoneid, type: int, comment: 地域id, readonly: false,defaultValue: 1}
-    - { name: sequenceId, type: int, comment: 序号ID, readonly: false,defaultValue: 0}

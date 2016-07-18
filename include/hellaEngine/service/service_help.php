@@ -217,15 +217,13 @@ class service_help extends service_base
     private function createHtmlDocments($services)
     {
         $documentDIR = $_SERVER ['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "tmp";
+
         if (!is_dir($documentDIR)) {
             mkdir($documentDIR, 0775, true);
         }
-
-        // dump ( C () );
         $app_namespace = C(\configure_constants::APP_NAMESPACE);
         $app_namespace = strtr($app_namespace, "\\", "_");
 
-        // dump ( $htmlfilename );
         $shorthtmlfilename = "/tmp/documents" . $app_namespace . ".html";
 
         $htmlfilename = $_SERVER ['DOCUMENT_ROOT'] . $shorthtmlfilename;

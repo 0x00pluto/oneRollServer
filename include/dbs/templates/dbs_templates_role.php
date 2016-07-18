@@ -177,51 +177,6 @@ abstract class dbs_templates_role extends super
         $this->set_defaultkeyandvalue ( self::DBKey_sex, 0 );
     }
     /**
-     * 游戏币
-     *
-     * @var
-     */
-    const DBKey_gamecoin = "gamecoin";
-
-	/**
-	 * 获取 游戏币
-	 * @return int
-	 */
-	public function get_gamecoin()
-	{
-		return $this->getdata ( self::DBKey_gamecoin );
-	}
-
-	/**
-	 * 设置 游戏币
-	 *
-	 * @param int $value
-	 * @return $this
-	 */
-	protected function set_gamecoin($value)
-	{
-		$this->setdata ( self::DBKey_gamecoin, intval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 游戏币
-     * 设置为 0
-     * @return $this
-     */
-    public function reset_gamecoin()
-    {
-        return $this->reset_defaultValue(self::DBKey_gamecoin);
-    }
-
-    /**
-     * 设置 游戏币 默认值
-     */
-    protected function _set_defaultvalue_gamecoin()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_gamecoin, 0 );
-    }
-    /**
      * 钻石数量
      *
      * @var
@@ -265,96 +220,6 @@ abstract class dbs_templates_role extends super
     protected function _set_defaultvalue_diamond()
     {
         $this->set_defaultkeyandvalue ( self::DBKey_diamond, 0 );
-    }
-    /**
-     * 声望值
-     *
-     * @var
-     */
-    const DBKey_reputation = "reputation";
-
-	/**
-	 * 获取 声望值
-	 * @return int
-	 */
-	public function get_reputation()
-	{
-		return $this->getdata ( self::DBKey_reputation );
-	}
-
-	/**
-	 * 设置 声望值
-	 *
-	 * @param int $value
-	 * @return $this
-	 */
-	protected function set_reputation($value)
-	{
-		$this->setdata ( self::DBKey_reputation, intval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 声望值
-     * 设置为 0
-     * @return $this
-     */
-    public function reset_reputation()
-    {
-        return $this->reset_defaultValue(self::DBKey_reputation);
-    }
-
-    /**
-     * 设置 声望值 默认值
-     */
-    protected function _set_defaultvalue_reputation()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_reputation, 0 );
-    }
-    /**
-     * 可以增加的声望剩余值
-     *
-     * @var
-     */
-    const DBKey_reputationAmount = "reputationAmount";
-
-	/**
-	 * 获取 可以增加的声望剩余值
-	 * @return int
-	 */
-	public function get_reputationAmount()
-	{
-		return $this->getdata ( self::DBKey_reputationAmount );
-	}
-
-	/**
-	 * 设置 可以增加的声望剩余值
-	 *
-	 * @param int $value
-	 * @return $this
-	 */
-	public function set_reputationAmount($value)
-	{
-		$this->setdata ( self::DBKey_reputationAmount, intval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 可以增加的声望剩余值
-     * 设置为 0
-     * @return $this
-     */
-    public function reset_reputationAmount()
-    {
-        return $this->reset_defaultValue(self::DBKey_reputationAmount);
-    }
-
-    /**
-     * 设置 可以增加的声望剩余值 默认值
-     */
-    protected function _set_defaultvalue_reputationAmount()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_reputationAmount, 0 );
     }
     /**
      * GM等级
@@ -852,51 +717,6 @@ abstract class dbs_templates_role extends super
         $this->set_defaultkeyandvalue ( self::DBKey_headiconurl, "" );
     }
     /**
-     * 历史增加游戏币数量
-     *
-     * @var
-     */
-    const DBKey_addgamecoins = "addgamecoins";
-
-	/**
-	 * 获取 历史增加游戏币数量
-	 * @return int
-	 */
-	public function get_addgamecoins()
-	{
-		return $this->getdata ( self::DBKey_addgamecoins );
-	}
-
-	/**
-	 * 设置 历史增加游戏币数量
-	 *
-	 * @param int $value
-	 * @return $this
-	 */
-	public function set_addgamecoins($value)
-	{
-		$this->setdata ( self::DBKey_addgamecoins, intval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 历史增加游戏币数量
-     * 设置为 0
-     * @return $this
-     */
-    public function reset_addgamecoins()
-    {
-        return $this->reset_defaultValue(self::DBKey_addgamecoins);
-    }
-
-    /**
-     * 设置 历史增加游戏币数量 默认值
-     */
-    protected function _set_defaultvalue_addgamecoins()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_addgamecoins, 0 );
-    }
-    /**
      * 地域id
      *
      * @var
@@ -941,51 +761,6 @@ abstract class dbs_templates_role extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_zoneid, 1 );
     }
-    /**
-     * 序号ID
-     *
-     * @var
-     */
-    const DBKey_sequenceId = "sequenceId";
-
-	/**
-	 * 获取 序号ID
-	 * @return int
-	 */
-	public function get_sequenceId()
-	{
-		return $this->getdata ( self::DBKey_sequenceId );
-	}
-
-	/**
-	 * 设置 序号ID
-	 *
-	 * @param int $value
-	 * @return $this
-	 */
-	public function set_sequenceId($value)
-	{
-		$this->setdata ( self::DBKey_sequenceId, intval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 序号ID
-     * 设置为 0
-     * @return $this
-     */
-    public function reset_sequenceId()
-    {
-        return $this->reset_defaultValue(self::DBKey_sequenceId);
-    }
-
-    /**
-     * 设置 序号ID 默认值
-     */
-    protected function _set_defaultvalue_sequenceId()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_sequenceId, 0 );
-    }
 
 
     /**
@@ -1009,14 +784,8 @@ abstract class dbs_templates_role extends super
         $this->_set_defaultvalue_job();
         //设置 性别(0男1女) 默认值
         $this->_set_defaultvalue_sex();
-        //设置 游戏币 默认值
-        $this->_set_defaultvalue_gamecoin();
         //设置 钻石数量 默认值
         $this->_set_defaultvalue_diamond();
-        //设置 声望值 默认值
-        $this->_set_defaultvalue_reputation();
-        //设置 可以增加的声望剩余值 默认值
-        $this->_set_defaultvalue_reputationAmount();
         //设置 GM等级 默认值
         $this->_set_defaultvalue_gmlevel();
         //设置 创建日期 默认值
@@ -1039,12 +808,8 @@ abstract class dbs_templates_role extends super
         $this->_set_defaultvalue_interests();
         //设置 头像链接 默认值
         $this->_set_defaultvalue_headiconurl();
-        //设置 历史增加游戏币数量 默认值
-        $this->_set_defaultvalue_addgamecoins();
         //设置 地域id 默认值
         $this->_set_defaultvalue_zoneid();
-        //设置 序号ID 默认值
-        $this->_set_defaultvalue_sequenceId();
 
     }
 }

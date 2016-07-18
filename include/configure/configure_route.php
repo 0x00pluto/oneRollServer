@@ -13,11 +13,6 @@ if (!function_exists('app_route')) {
             "oneroll.tomatofuns.com" => "",
             "gmtools.tomatofuns.com" => "",
             "test.tomatofuns.com" => "",
-            //苹果验证服务器
-            "apiapplecheck.tomatofuns.com" => "",
-            "payverify.tomatofuns.com" => "apps\\payverify",
-            "payverifyappstoretest.tomatofuns.com" => "apps\\payverify",
-            "payverify1.cooking.com" => "apps\\payverify"
         ];
 
         if (isset ($routes [$_SERVER ['HTTP_HOST']])) {
