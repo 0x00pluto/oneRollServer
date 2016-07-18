@@ -480,8 +480,6 @@ class Common_Db_mongo
             ));
             // 'w' => 1
         } catch (\MongoDuplicateKeyException $e) {
-//            dump($data_arr);
-//            dump($e);
             return false;
         }
         return true;

@@ -246,7 +246,7 @@ a:hover{
 </style>';
         $contents .= '</head>';
         $contents .= "<body>\n";
-        $contents .= '<h1>餐厅服务器API文档 </h1>';
+        $contents .= '<h1>夺宝API文档 </h1>';
         $contents .= '<h2>生成日期:' . date("c") . '</h2>';
 
         $contents .= '<h3>通过调用 <a href=http://' . $_SERVER ['HTTP_HOST'] . '/test.php?functionname=help.help&backurl=' . $shorthtmlfilename . '>help.help</a> 生成</h3>';

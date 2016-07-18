@@ -58,7 +58,7 @@ final class dbs_player implements dbs_i_iUpdate, dbs_i_iSync
      */
     public function isRoleExists()
     {
-        return $this->accountExist && $this->db_role()->exist();
+        return $this->accountExist && dbs_role::createWithPlayer($this)->exist();
     }
 
     /**
