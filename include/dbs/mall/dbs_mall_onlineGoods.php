@@ -27,6 +27,7 @@ class dbs_mall_onlineGoods extends dbs_templates_mall_onlineGoods
         $this->set_tablename(self::DBKey_tablename);
     }
 
+
     /**
      * @param dbs_mall_mallGoodsData $mallGoodsData
      * @return dbs_mall_onlineGoods

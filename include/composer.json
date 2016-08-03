@@ -10,8 +10,7 @@
     ],
     "classmap":[
       "err",
-      "hellaEngine/err",
-      "apps/payverify/err"
+      "hellaEngine/err"
     ]
   },
   "require": {

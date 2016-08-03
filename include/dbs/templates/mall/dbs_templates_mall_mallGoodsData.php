@@ -351,6 +351,51 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->set_defaultkeyandvalue ( self::DBKey_rollTime, 0 );
     }
     /**
+     * 商品售出数量
+     *
+     * @var
+     */
+    const DBKey_selloutCount = "selloutCount";
+
+	/**
+	 * 获取 商品售出数量
+	 * @return int
+	 */
+	public function get_selloutCount()
+	{
+		return $this->getdata ( self::DBKey_selloutCount );
+	}
+
+	/**
+	 * 设置 商品售出数量
+	 *
+	 * @param int $value
+	 * @return $this
+	 */
+	public function set_selloutCount($value)
+	{
+		$this->setdata ( self::DBKey_selloutCount, intval($value) );
+		return $this;
+	}
+
+	/**
+     * 重置 商品售出数量
+     * 设置为 0
+     * @return $this
+     */
+    public function reset_selloutCount()
+    {
+        return $this->reset_defaultValue(self::DBKey_selloutCount);
+    }
+
+    /**
+     * 设置 商品售出数量 默认值
+     */
+    protected function _set_defaultvalue_selloutCount()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_selloutCount, 0 );
+    }
+    /**
      * 商品总数
      *
      * @var
@@ -561,6 +606,8 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->_set_defaultvalue_endTime();
         //设置 抽奖时间 默认值
         $this->_set_defaultvalue_rollTime();
+        //设置 商品售出数量 默认值
+        $this->_set_defaultvalue_selloutCount();
         //设置 商品总数 默认值
         $this->_set_defaultvalue_count();
         //设置 单价 默认值

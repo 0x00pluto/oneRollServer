@@ -512,7 +512,7 @@ class Common_Db_mongo
             'multiple' => true
         ]);
 
-        return $result ;
+        return $result;
     }
 
     /**
@@ -546,15 +546,16 @@ class Common_Db_mongo
      *            排序, array('key'=>1);1升序,-1降序,可以多字段排序
      * @return array();
      */
-    function query($tablename, $where = array(), $fields = array(), $limit = -1, $sortarray = array())
+    function query($tablename,
+                   $where = array(),
+                   $fields = array(),
+                   $limit = -1,
+                   $sortarray = array())
     {
         $cursor = $this->queryCursor($tablename, $where, $fields, $limit, $sortarray);
-        $result = array();
-        foreach ($cursor as $id => $value) {
-            $result [] = $value;
-        }
-        return $result;
+        return $cursor->getResults();
     }
+
 
     /**
      * 查询
@@ -567,11 +568,18 @@ class Common_Db_mongo
      *            返回的字段,全部返回用 array()
      * @param number $limit
      *            返回条数,默认1条,-1为全部返回
-     * @param array() $sortarray
+     * @param array() $sortArray
      *            排序, array('key'=>1);1升序,-1降序,可以多字段排序
-     * @return \MongoCursor;
+     * @param int $skip
+     * 跳过的条数.默认为-1,从头开始
+     * @return Common_Db_MongoQuery;
      */
-    public function queryCursor($tablename, $where = array(), $fields = array(), $limit = 1, $sortarray = array())
+    public function queryCursor($tablename,
+                                $where = array(),
+                                $fields = array(),
+                                $limit = 1,
+                                $sortArray = array(),
+                                $skip = -1)
     {
         $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
         $cursor = $collection->find($where);
@@ -582,6 +590,9 @@ class Common_Db_mongo
         if ($limit != -1) {
             $cursor->limit($limit);
         }
+        if ($skip != -1) {
+            $cursor->skip($skip);
+        }
         // 过滤字段
         $fieldfilter = array();
         foreach ($fields as $field) {
@@ -591,9 +602,9 @@ class Common_Db_mongo
         /**
          * 排序
          */
-        $cursor->sort($sortarray);
+        $cursor->sort($sortArray);
 
-        return $cursor;
+        return Common_Db_MongoQuery::create($cursor);
     }
 
     /**
@@ -607,7 +618,7 @@ class Common_Db_mongo
      */
     function count($tablename, $where = array())
     {
-        return $this->queryCursor($tablename, $where)->count();
+        return $this->queryCursor($tablename, $where)->getCursor()->count();
     }
 
     /**
@@ -688,7 +699,7 @@ class Common_Db_mongo
     /**
      * 检测数据是否有错
      *
-     * @param any $data
+     * @param mixed $data
      * @return number
      */
     static function check_data_error($data)

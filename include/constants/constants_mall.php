@@ -2,23 +2,11 @@
 
 namespace constants;
 
-class constants_mall {
-	/**
-	 * 果蔬店
-	 *
-	 * @var
-	 */
-	const TYPE_FRUIT = '0';
-	/**
-	 * 肉店
-	 *
-	 * @var
-	 */
-	const TYPE_BUTCHER = '1';
-	/**
-	 * 海鲜店
-	 *
-	 * @var
-	 */
-	const TYPE_SEAFOOD = '2';
+
+class constants_mall
+{
+    /**
+     * 开始的开奖码
+     */
+    const CODE_START = 10000000;
 }

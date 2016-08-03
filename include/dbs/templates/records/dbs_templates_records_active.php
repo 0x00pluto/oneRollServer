@@ -1,23 +1,23 @@
 <?php
 
-namespace dbs\templates;
+namespace dbs\templates\records;
 
 use dbs\dbs_baseplayer as super;
 
 /**
  * auto create by gameConsole!!
  * sourceFile:
- * Class dbs_templates_equipment
- * @package dbs\templates
+ * Class dbs_templates_records_active
+ * @package dbs\templates\records
  */
-abstract class dbs_templates_equipment extends super
+abstract class dbs_templates_records_active extends super
 {
     /**
      * 表名
      *
      * @var string
      */
-    const DBKey_tablename = "equipments";
+    const DBKey_tablename = "records_active";
     /**
      * 数据类型
      *
@@ -39,52 +39,52 @@ abstract class dbs_templates_equipment extends super
      */
     protected function _set_defaultvalue_dataTemplateType()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_dataTemplateType, "equipment" );
+        $this->set_defaultkeyandvalue ( self::DBKey_dataTemplateType, "records.active" );
     }
     /**
-     * 赠送出去的装备
+     * 开奖记录(key=>goodsId value=>recordData)
      *
      * @var
      */
-    const DBKey_giveequipmentlist = "giveequipmentlist";
+    const DBKey_records = "records";
 
 	/**
-	 * 获取 赠送出去的装备
+	 * 获取 开奖记录(key=>goodsId value=>recordData)
 	 * @return array
 	 */
-	public function get_giveequipmentlist()
+	public function get_records()
 	{
-		return $this->getdata ( self::DBKey_giveequipmentlist );
+		return $this->getdata ( self::DBKey_records );
 	}
 
 	/**
-	 * 设置 赠送出去的装备
+	 * 设置 开奖记录(key=>goodsId value=>recordData)
 	 *
 	 * @param array $value
 	 * @return $this
 	 */
-	public function set_giveequipmentlist($value)
+	public function set_records($value)
 	{
-		$this->setdata ( self::DBKey_giveequipmentlist, $value );
+		$this->setdata ( self::DBKey_records, $value );
 		return $this;
 	}
 
 	/**
-     * 重置 赠送出去的装备
+     * 重置 开奖记录(key=>goodsId value=>recordData)
      * 设置为 []
      * @return $this
      */
-    public function reset_giveequipmentlist()
+    public function reset_records()
     {
-        return $this->reset_defaultValue(self::DBKey_giveequipmentlist);
+        return $this->reset_defaultValue(self::DBKey_records);
     }
 
     /**
-     * 设置 赠送出去的装备 默认值
+     * 设置 开奖记录(key=>goodsId value=>recordData) 默认值
      */
-    protected function _set_defaultvalue_giveequipmentlist()
+    protected function _set_defaultvalue_records()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_giveequipmentlist, [] );
+        $this->set_defaultkeyandvalue ( self::DBKey_records, [] );
     }
 
 
@@ -103,8 +103,8 @@ abstract class dbs_templates_equipment extends super
         parent::initializeDefaultValues();
         //设置 数据类型 默认值
         $this->_set_defaultvalue_dataTemplateType();
-        //设置 赠送出去的装备 默认值
-        $this->_set_defaultvalue_giveequipmentlist();
+        //设置 开奖记录(key=>goodsId value=>recordData) 默认值
+        $this->_set_defaultvalue_records();
 
     }
 }

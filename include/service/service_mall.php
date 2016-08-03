@@ -22,18 +22,35 @@ class service_mall extends service_base
     protected function configureFunctions()
     {
         $this->addFunction('getAll');
+        $this->addFunction('buy');
     }
 
     /**
      * 获取所有道具
+     * @param int $start
+     * @param int $count
      * @return Common_Util_ReturnVar
      */
-    public function getAll()
+    public function getAll($start = -1, $count = 2)
     {
         $data = [];
         //interface err_service_mall_getAll
         $manager = new dbs_mall_manger();
-        return $manager->getAll();
+        return $manager->getAll($start, $count);
+    }
+
+    /**
+     * @param $mallId
+     * @param $num
+     * @return Common_Util_ReturnVar
+     */
+    public function buy($mallId, $num = 1)
+    {
+        $manager = new dbs_mall_manger();
+        return $manager->buy(
+            $this->callerUserInstance,
+            $mallId,
+            $num);
     }
 
 }

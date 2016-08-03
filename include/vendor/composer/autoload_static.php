@@ -99,12 +99,6 @@ class ComposerStaticInite54ce7a8e264726200896e56de6e8e42
     );
 
     public static $classMap = array (
-        'apps\\payverify\\err\\err_dbs_applereceipt_center_verify' => __DIR__ . '/../..' . '/apps/payverify/err/err_dbs_applereceipt_center.php',
-        'apps\\payverify\\err\\err_dbs_googleplayreceipt_center_verify' => __DIR__ . '/../..' . '/apps/payverify/err/err_dbs_googleplayreceipt_center.php',
-        'apps\\payverify\\err\\err_dbs_notice_center_check' => __DIR__ . '/../..' . '/apps/payverify/err/err_dbs_notice_center.php',
-        'apps\\payverify\\err\\err_dbs_notice_center_recordrechargedata' => __DIR__ . '/../..' . '/apps/payverify/err/err_dbs_notice_center.php',
-        'apps\\payverify\\err\\err_dbs_xiaomireceipt_center_verify' => __DIR__ . '/../..' . '/apps/payverify/err/err_dbs_xiaomireceipt_center.php',
-        'apps\\payverify\\err\\err_service_helloworld_helloworld' => __DIR__ . '/../..' . '/apps/payverify/err/err_service_helloworld.php',
         'err\\err_dbs_base_level_addexp' => __DIR__ . '/../..' . '/err/err_dbs_base_level.php',
         'err\\err_dbs_buff_list_addbuff' => __DIR__ . '/../..' . '/err/err_dbs_buff_list.php',
         'err\\err_dbs_chat_normal_chat' => __DIR__ . '/../..' . '/err/err_dbs_chat_normal.php',
@@ -241,6 +235,8 @@ class ComposerStaticInite54ce7a8e264726200896e56de6e8e42
         'err\\err_dbs_mailbox_list_deleteMail' => __DIR__ . '/../..' . '/err/err_dbs_mailbox_list.php',
         'err\\err_dbs_mailbox_list_readmail' => __DIR__ . '/../..' . '/err/err_dbs_mailbox_list.php',
         'err\\err_dbs_mailbox_list_recvattachment' => __DIR__ . '/../..' . '/err/err_dbs_mailbox_list.php',
+        'err\\err_dbs_mall' => __DIR__ . '/../..' . '/err/err_dbs_mall_manager.php',
+        'err\\err_dbs_mall_manger_buy' => __DIR__ . '/../..' . '/err/err_dbs_mall_manager.php',
         'err\\err_dbs_mission_missioncomplete' => __DIR__ . '/../..' . '/err/err_dbs_mission.php',
         'err\\err_dbs_mission_missioncompleteconditionusediamond' => __DIR__ . '/../..' . '/err/err_dbs_mission.php',
         'err\\err_dbs_mission_missioncompleteusediamond' => __DIR__ . '/../..' . '/err/err_dbs_mission.php',

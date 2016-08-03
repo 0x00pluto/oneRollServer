@@ -6,12 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'apps\\payverify\\err\\err_dbs_applereceipt_center_verify' => $baseDir . '/apps/payverify/err/err_dbs_applereceipt_center.php',
-    'apps\\payverify\\err\\err_dbs_googleplayreceipt_center_verify' => $baseDir . '/apps/payverify/err/err_dbs_googleplayreceipt_center.php',
-    'apps\\payverify\\err\\err_dbs_notice_center_check' => $baseDir . '/apps/payverify/err/err_dbs_notice_center.php',
-    'apps\\payverify\\err\\err_dbs_notice_center_recordrechargedata' => $baseDir . '/apps/payverify/err/err_dbs_notice_center.php',
-    'apps\\payverify\\err\\err_dbs_xiaomireceipt_center_verify' => $baseDir . '/apps/payverify/err/err_dbs_xiaomireceipt_center.php',
-    'apps\\payverify\\err\\err_service_helloworld_helloworld' => $baseDir . '/apps/payverify/err/err_service_helloworld.php',
     'err\\err_dbs_base_level_addexp' => $baseDir . '/err/err_dbs_base_level.php',
     'err\\err_dbs_buff_list_addbuff' => $baseDir . '/err/err_dbs_buff_list.php',
     'err\\err_dbs_chat_normal_chat' => $baseDir . '/err/err_dbs_chat_normal.php',
@@ -148,6 +142,8 @@ return array(
     'err\\err_dbs_mailbox_list_deleteMail' => $baseDir . '/err/err_dbs_mailbox_list.php',
     'err\\err_dbs_mailbox_list_readmail' => $baseDir . '/err/err_dbs_mailbox_list.php',
     'err\\err_dbs_mailbox_list_recvattachment' => $baseDir . '/err/err_dbs_mailbox_list.php',
+    'err\\err_dbs_mall' => $baseDir . '/err/err_dbs_mall_manager.php',
+    'err\\err_dbs_mall_manger_buy' => $baseDir . '/err/err_dbs_mall_manager.php',
     'err\\err_dbs_mission_missioncomplete' => $baseDir . '/err/err_dbs_mission.php',
     'err\\err_dbs_mission_missioncompleteconditionusediamond' => $baseDir . '/err/err_dbs_mission.php',
     'err\\err_dbs_mission_missioncompleteusediamond' => $baseDir . '/err/err_dbs_mission.php',

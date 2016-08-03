@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="分发服务器" showDifferentInSync="false" showNewOnSourceInSync="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="一元夺宝FTP" showDifferentInSync="false" showNewOnTargetInSync="false">
     <serverData>
-      <paths name="分发服务器">
+      <paths name="一元夺宝FTP">
         <serverdata>
           <mappings>
             <mapping deploy="/site_oneRollServer" local="$PROJECT_DIR$" web="/" />

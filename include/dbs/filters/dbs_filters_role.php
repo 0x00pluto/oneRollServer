@@ -30,16 +30,12 @@ class dbs_filters_role
      * @var unknown
      */
     static $filters_lookup_blocked_info = array(
-        dbs_role::DBKey_gamecoin,
         dbs_role::DBKey_diamond,
         dbs_role::DBKey_gmlevel,
 
         dbs_role::DBKey_create_time,
-        dbs_role::DBKey_addgamecoins,
         dbs_role::DBKey_continuelogin,
 
-        dbs_role::DBKey_reputationAmount,
-        dbs_role::DBKey_reputation,
     );
 
     /**

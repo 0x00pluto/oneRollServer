@@ -213,6 +213,7 @@ abstract class data_basedatacell extends data_base
      * @param array $arr
      * @return static
      */
+
     public static function create_with_array(array $arr)
     {
         $ins = new static ();

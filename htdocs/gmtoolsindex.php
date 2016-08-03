@@ -16,12 +16,12 @@ function __call($post)
     require "../include/gateway.php";
     $message = Common_Util_Message::create_with_rpccall($post ['command'], $params);
     $message->setMessageBodyContent('clientVersion', '2.0.0');
-    $encodemessage = Common_Util_Message::encodeMessage([
+    $encodeMessage = Common_Util_Message::encodeMessage([
         $message->toArray()
     ]);
 
     $gateway = new gateway ();
-    $messagereturn = $gateway->processMessage($encodemessage);
+    $messagereturn = $gateway->processMessage($encodeMessage);
 
     $messagereturnarr = Common_Util_Message::decodeMessage($messagereturn);
 

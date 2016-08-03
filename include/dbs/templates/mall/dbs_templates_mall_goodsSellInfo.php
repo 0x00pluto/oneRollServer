@@ -131,6 +131,51 @@ abstract class dbs_templates_mall_goodsSellInfo extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_sellcount, 0 );
     }
+    /**
+     * 出售详情
+     *
+     * @var
+     */
+    const DBKey_sellDetails = "sellDetails";
+
+	/**
+	 * 获取 出售详情
+	 * @return array
+	 */
+	public function get_sellDetails()
+	{
+		return $this->getdata ( self::DBKey_sellDetails );
+	}
+
+	/**
+	 * 设置 出售详情
+	 *
+	 * @param array $value
+	 * @return $this
+	 */
+	public function set_sellDetails($value)
+	{
+		$this->setdata ( self::DBKey_sellDetails, $value );
+		return $this;
+	}
+
+	/**
+     * 重置 出售详情
+     * 设置为 []
+     * @return $this
+     */
+    public function reset_sellDetails()
+    {
+        return $this->reset_defaultValue(self::DBKey_sellDetails);
+    }
+
+    /**
+     * 设置 出售详情 默认值
+     */
+    protected function _set_defaultvalue_sellDetails()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_sellDetails, [] );
+    }
 
 
     /**
@@ -152,6 +197,8 @@ abstract class dbs_templates_mall_goodsSellInfo extends super
         $this->_set_defaultvalue_id();
         //设置 已经售出的数量 默认值
         $this->_set_defaultvalue_sellcount();
+        //设置 出售详情 默认值
+        $this->_set_defaultvalue_sellDetails();
 
     }
 }

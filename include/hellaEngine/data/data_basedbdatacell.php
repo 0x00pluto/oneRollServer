@@ -821,24 +821,36 @@ abstract class data_basedbdatacell extends data_basedatacell
 
 
     /**
+     * @param array $dbResult
+     * @return static
+     */
+    private static function createWithDB(array $dbResult)
+    {
+        $db = static::db_connect();
+        $dbIns = new static ();
+        $dbIns->loadFromDBBefore($db);
+        $dbIns->fromDBData($dbResult);
+        $dbIns->loadFromDBAfter($db);
+        return $dbIns;
+    }
+
+    /**
      * 获取所有数据
      * @param array $where
+     * @param int $skip
+     * @param int $limit
      * @return static[]
      */
-    public static function all(array $where = [])
+    public static function all(array $where = [], $skip = -1, $limit = -1)
     {
         $result = [];
         $db = static::db_connect();
 
         $ins = new static ();
-        $dbResults = $db->query($ins->get_tablename(), $where);
+        $dbResults = $db->queryCursor($ins->get_tablename(), $where, [], $limit, [], $skip)->getResults();
 
         foreach ($dbResults as $dbResult) {
-            $dbIns = new static ();
-            $dbIns->loadFromDBBefore($db);
-            $dbIns->fromDBData($dbResult);
-            $dbIns->loadFromDBAfter($db);
-            $result [] = $dbIns;
+            $result [] = self::createWithDB($dbResult);
         }
         return $result;
     }
@@ -853,12 +865,9 @@ abstract class data_basedbdatacell extends data_basedatacell
         $db = static::db_connect();
         $dbIns = new static ();
 
-        $dbResults = $db->query($dbIns->get_tablename(), $where);
+        $dbResults = $db->query($dbIns->get_tablename(), $where, [], 1);
         foreach ($dbResults as $dbResult) {
-            $dbIns->loadFromDBBefore($db);
-            $dbIns->fromDBData($dbResult);
-            $dbIns->loadFromDBAfter($db);
-            return $dbIns;
+            return self::createWithDB($dbResult);
         }
         return $dbIns;
 

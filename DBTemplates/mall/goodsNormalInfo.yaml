@@ -19,3 +19,5 @@ DBType: dataCell
 datas:
     - { name: id, type: string, comment: 商品ID, access: 0}
     - { name: description, type: string, comment: 描述, access: 0}
+    - { name: kindBigId, type: int, comment: 分类大类ID, access: 0}
+    - { name: kindSmallId, type: int, comment: 分类小类ID, access: 0}
