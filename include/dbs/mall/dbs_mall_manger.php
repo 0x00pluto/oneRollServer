@@ -9,11 +9,13 @@
 namespace dbs\mall;
 
 
+use Common\Util\Common_Util_Http;
 use Common\Util\Common_Util_ReturnVar;
 use constants\constants_mall;
 use dbs\dbs_player;
 use dbs\records\dbs_records_active;
 use dbs\records\dbs_records_recordData;
+use dbs\storage\dbs_storage_globalValue;
 use err\err_dbs_mall_manger_buy;
 
 class dbs_mall_manger
@@ -37,6 +39,13 @@ class dbs_mall_manger
         foreach ($allGoods as $Goods) {
             $data[] = $Goods->toArray();
         }
+
+//        $dbs_mall_recent_buy = self::getRecentBuy();
+
+//        dump($dbs_mall_recent_buy->getTotalRollTimeSpan());
+//
+//        self::getRemoteRollNum();
+
 
         //code...
         return Common_Util_ReturnVar::RetSucc($data);
@@ -78,11 +87,12 @@ class dbs_mall_manger
 //        $mallSellInfo = dbs_mall_goodsSellInfo::create_with_array($mallGoodsData->get_goodsSellInfo());
 //        $mallSellInfo->createCode($player, $num);
 
-        list($rollCodes, $sellDetail) = $mallGoodsData->sell($player, $num);
+
+        list($rollCodes) = $mallGoodsData->sell($player, $num);
 
         $record = dbs_records_recordData::create($mallGoodsData, $rollCodes);
 
-        dump($mallGoodsData->toArray());
+//        dump($mallGoodsData->toArray());
 //        dump($rollCodes);
         //code...
 
@@ -92,9 +102,41 @@ class dbs_mall_manger
 
         dbs_records_active::createWithPlayer($player)->addRecord($record);
 
-
         return Common_Util_ReturnVar::RetSucc($data);
     }
 
+
+    /**
+     * @return dbs_mall_recentBuy
+     */
+    static function getRecentBuy()
+    {
+        return dbs_mall_recentBuy::create_with_array(dbs_storage_globalValue::getValue(constants_mall::RECENT_BUY, []));
+    }
+
+
+    static public function getRemoteRollNum()
+    {
+        $response = Common_Util_Http::http("http://f.apiplus.cn/cqssc-1.json");
+
+        if ($response['http_code'] = 200) {
+            $jsonData = json_decode($response['response'], true);
+            dump($jsonData);
+
+
+            $caipaiData = $jsonData["data"][0];
+
+            dump($caipaiData);
+
+
+            dbs_mall_remoteRollNum::saveCqsscData($jsonData);
+
+        }
+//        dump($response);
+
+
+        dbs_mall_remoteRollNum::getRemoteRollId(time() + 8 * 60 * 60);
+
+    }
 
 }

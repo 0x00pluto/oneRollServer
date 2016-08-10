@@ -60,7 +60,7 @@ class Common_Util_Time
     /**
      * 获取当前时间
      *
-     * @return 秒
+     * @return float
      */
     public static function getCurrenttime()
     {

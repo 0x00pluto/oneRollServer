@@ -1,8 +1,8 @@
 #数据说明:
 className: goodsSellInfoDetail
-DBType: dataCell
+DBType: globalDB
 # parent: 
-#TableName: mall_goodsSellInfoDetail
+TableName: mall_goodsSellInfoDetails
 #数据类型
 #playerDB:寄生于用户本身的数据 需要继承使用
 #globalDB:全局DB 需要继承使用
@@ -18,7 +18,10 @@ DBType: dataCell
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
     - { name: id, type: string, comment: 销售流水号, access: 0}
+    - { name: mallGoodsId, type: string, comment: 商品流水号, access: 0}
     - { name: sellcount, type: int, comment: 售出的数量, access: 0}
     - { name: selltime, type: int, comment: 购买时间, access: 0}
-    - { name: rollCodes, type: array, comment: 抽奖码, access: 0}
+    - { name: rolltimeSpan, type: int, comment: 抽奖时间戳, access: 0}
+    - { name: rollCode, type: int, comment: 抽奖码, access: 0}
+    - { name: userid, type: string, comment: 用户ID, access: 0}
     - { name: userinfo, type: array, comment: 购买者信息, access: 0}

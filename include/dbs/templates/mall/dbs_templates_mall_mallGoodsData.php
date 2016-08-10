@@ -171,51 +171,6 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->set_defaultkeyandvalue ( self::DBKey_onlineTime, 0 );
     }
     /**
-     * 下架时间
-     *
-     * @var
-     */
-    const DBKey_offlineTime = "offlineTime";
-
-	/**
-	 * 获取 下架时间
-	 * @return int
-	 */
-	public function get_offlineTime()
-	{
-		return $this->getdata ( self::DBKey_offlineTime );
-	}
-
-	/**
-	 * 设置 下架时间
-	 *
-	 * @param int $value
-	 * @return $this
-	 */
-	public function set_offlineTime($value)
-	{
-		$this->setdata ( self::DBKey_offlineTime, intval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 下架时间
-     * 设置为 0
-     * @return $this
-     */
-    public function reset_offlineTime()
-    {
-        return $this->reset_defaultValue(self::DBKey_offlineTime);
-    }
-
-    /**
-     * 设置 下架时间 默认值
-     */
-    protected function _set_defaultvalue_offlineTime()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_offlineTime, 0 );
-    }
-    /**
      * 开始竞拍时间
      *
      * @var
@@ -306,49 +261,49 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->set_defaultkeyandvalue ( self::DBKey_endTime, 0 );
     }
     /**
-     * 抽奖时间
+     * 商品状态
      *
      * @var
      */
-    const DBKey_rollTime = "rollTime";
+    const DBKey_status = "status";
 
 	/**
-	 * 获取 抽奖时间
+	 * 获取 商品状态
 	 * @return int
 	 */
-	public function get_rollTime()
+	public function get_status()
 	{
-		return $this->getdata ( self::DBKey_rollTime );
+		return $this->getdata ( self::DBKey_status );
 	}
 
 	/**
-	 * 设置 抽奖时间
+	 * 设置 商品状态
 	 *
 	 * @param int $value
 	 * @return $this
 	 */
-	public function set_rollTime($value)
+	public function set_status($value)
 	{
-		$this->setdata ( self::DBKey_rollTime, intval($value) );
+		$this->setdata ( self::DBKey_status, intval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 抽奖时间
+     * 重置 商品状态
      * 设置为 0
      * @return $this
      */
-    public function reset_rollTime()
+    public function reset_status()
     {
-        return $this->reset_defaultValue(self::DBKey_rollTime);
+        return $this->reset_defaultValue(self::DBKey_status);
     }
 
     /**
-     * 设置 抽奖时间 默认值
+     * 设置 商品状态 默认值
      */
-    protected function _set_defaultvalue_rollTime()
+    protected function _set_defaultvalue_status()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_rollTime, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_status, 0 );
     }
     /**
      * 商品售出数量
@@ -575,6 +530,51 @@ class dbs_templates_mall_mallGoodsData extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_goodsSellInfo, [] );
     }
+    /**
+     * 商品抽奖信息
+     *
+     * @var
+     */
+    const DBKey_goodsRollResult = "goodsRollResult";
+
+	/**
+	 * 获取 商品抽奖信息
+	 * @return array
+	 */
+	public function get_goodsRollResult()
+	{
+		return $this->getdata ( self::DBKey_goodsRollResult );
+	}
+
+	/**
+	 * 设置 商品抽奖信息
+	 *
+	 * @param array $value
+	 * @return $this
+	 */
+	public function set_goodsRollResult($value)
+	{
+		$this->setdata ( self::DBKey_goodsRollResult, $value );
+		return $this;
+	}
+
+	/**
+     * 重置 商品抽奖信息
+     * 设置为 []
+     * @return $this
+     */
+    public function reset_goodsRollResult()
+    {
+        return $this->reset_defaultValue(self::DBKey_goodsRollResult);
+    }
+
+    /**
+     * 设置 商品抽奖信息 默认值
+     */
+    protected function _set_defaultvalue_goodsRollResult()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_goodsRollResult, [] );
+    }
 
 
     /**
@@ -598,14 +598,12 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->_set_defaultvalue_valid();
         //设置 上架时间 默认值
         $this->_set_defaultvalue_onlineTime();
-        //设置 下架时间 默认值
-        $this->_set_defaultvalue_offlineTime();
         //设置 开始竞拍时间 默认值
         $this->_set_defaultvalue_startTime();
         //设置 结束竞拍时间 默认值
         $this->_set_defaultvalue_endTime();
-        //设置 抽奖时间 默认值
-        $this->_set_defaultvalue_rollTime();
+        //设置 商品状态 默认值
+        $this->_set_defaultvalue_status();
         //设置 商品售出数量 默认值
         $this->_set_defaultvalue_selloutCount();
         //设置 商品总数 默认值
@@ -616,6 +614,8 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->_set_defaultvalue_goodsInfo();
         //设置 商品信息 默认值
         $this->_set_defaultvalue_goodsSellInfo();
+        //设置 商品抽奖信息 默认值
+        $this->_set_defaultvalue_goodsRollResult();
 
     }
 }

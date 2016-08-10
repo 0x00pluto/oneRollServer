@@ -176,6 +176,51 @@ abstract class dbs_templates_mall_goodsSellInfo extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_sellDetails, [] );
     }
+    /**
+     * 抽奖详情
+     *
+     * @var
+     */
+    const DBKey_rollDetails = "rollDetails";
+
+	/**
+	 * 获取 抽奖详情
+	 * @return array
+	 */
+	public function get_rollDetails()
+	{
+		return $this->getdata ( self::DBKey_rollDetails );
+	}
+
+	/**
+	 * 设置 抽奖详情
+	 *
+	 * @param array $value
+	 * @return $this
+	 */
+	public function set_rollDetails($value)
+	{
+		$this->setdata ( self::DBKey_rollDetails, $value );
+		return $this;
+	}
+
+	/**
+     * 重置 抽奖详情
+     * 设置为 []
+     * @return $this
+     */
+    public function reset_rollDetails()
+    {
+        return $this->reset_defaultValue(self::DBKey_rollDetails);
+    }
+
+    /**
+     * 设置 抽奖详情 默认值
+     */
+    protected function _set_defaultvalue_rollDetails()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_rollDetails, [] );
+    }
 
 
     /**
@@ -199,6 +244,8 @@ abstract class dbs_templates_mall_goodsSellInfo extends super
         $this->_set_defaultvalue_sellcount();
         //设置 出售详情 默认值
         $this->_set_defaultvalue_sellDetails();
+        //设置 抽奖详情 默认值
+        $this->_set_defaultvalue_rollDetails();
 
     }
 }

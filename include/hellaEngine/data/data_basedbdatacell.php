@@ -348,7 +348,7 @@ abstract class data_basedbdatacell extends data_basedatacell
 
     /**
      * 数据库主键
-     * @param array $arr
+     * @param array $arr [key1,key2]
      * @return array
      */
     protected function set_primary_key($arr)
@@ -356,8 +356,7 @@ abstract class data_basedbdatacell extends data_basedatacell
         if (is_array($arr)) {
             $this->_primary_key = array_unique(array_merge($arr, $this->_primary_key));
         }
-
-        return $this;
+        return $this->_primary_key;
     }
 
     /**

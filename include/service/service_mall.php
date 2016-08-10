@@ -10,6 +10,7 @@ namespace service;
 
 
 use Common\Util\Common_Util_ReturnVar;
+use Common\Util\Common_Util_Time;
 use dbs\mall\dbs_mall_manger;
 
 /**
@@ -35,6 +36,16 @@ class service_mall extends service_base
     {
         $data = [];
         //interface err_service_mall_getAll
+
+
+//        $currentTime = explode('.', number_format(Common_Util_Time::getCurrenttime(), 3));
+//        dump($currentTime);
+
+//        $date = new \DateTime();
+//        dump(intval($date->format("His") . end($currentTime)));
+
+//        dump(end(explode('.', number_format(Common_Util_Time::getCurrenttime(), 3))));
+
         $manager = new dbs_mall_manger();
         return $manager->getAll($start, $count);
     }

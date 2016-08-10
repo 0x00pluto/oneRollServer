@@ -1,8 +1,8 @@
 #数据说明:
-className: goodsSellInfo
+className: globalValue
 DBType: playerDB
 # parent: 
-#TableName: mall_goodsSellInfo
+TableName: storage_globalValues
 #数据类型
 #playerDB:寄生于用户本身的数据 需要继承使用
 #globalDB:全局DB 需要继承使用
@@ -17,7 +17,5 @@ DBType: playerDB
 #
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
-    - { name: id, type: string, comment: 商品ID, access: 0}
-    - { name: sellcount, type: int, comment: 已经售出的数量, access: 0}
-    - { name: sellDetails, type: array, comment: 出售详情, access: 0}
-    - { name: rollDetails, type: array, comment: 抽奖详情, access: 0}
+    - { name: key, type: string, comment: key, access: 0}
+    - { name: value, type: mixed, comment: value, access: 0}

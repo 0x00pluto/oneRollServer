@@ -1,8 +1,8 @@
 #数据说明:
-className: inviteData
+className: goodsRollResult
 DBType: dataCell
 # parent: 
-#TableName: invite_inviteData
+#TableName: mall_goodsRollResult
 #数据类型
 #playerDB:寄生于用户本身的数据 需要继承使用
 #globalDB:全局DB 需要继承使用
@@ -10,12 +10,15 @@ DBType: dataCell
 #
 # - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
 #name:字段名称
-#type:支持数据类型 int=0 string="" array=[] bool=false
+#type:支持数据类型 int=0 string="" array=[] bool=false mixed=none
 #access: 0 默认为0 ,0:可读写 1:只读 2:只写 3:内部访问
 #comment:为字段注释
 #defaultValue:默认值
 #
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
-    - { name: userId, type: string, comment: 被邀请者的用户ID, access: 0}
-    - { name: inviteTimespan, type: int, comment: 邀请时间戳, access: 0}
+    - { name: cqsscId, type: string, comment: 重庆时时彩开奖ID, access: 0}
+    - { name: rollTime, type: int, comment: 抽奖时间, access: 0}
+    - { name: recentBuy, type: array, comment: 最后50个购买者信息, access: 0}
+    - { name: cqsscData, type: array, comment: 重庆时时彩信息, access: 0}
+    - { name: luckNum, type: int, comment: 中奖ID, access: 0}
