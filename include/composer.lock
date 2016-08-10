@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b0c6a2973da82773373992d860c69f2",
-    "content-hash": "7d690346162a9fbff35e1dde3b7812d1",
+    "hash": "ef85a9633a2365d67454e738b38cd543",
+    "content-hash": "9494137c7305f117e92430c7930ff536",
     "packages": [
         {
             "name": "brandonwamboldt/utilphp",
@@ -55,20 +55,20 @@
         },
         {
             "name": "hella-engine/rpc-message",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/babety/HellaEngineMessage.git",
-                "reference": "463e55740a4748da6c05815b88ade2fd39fecddc"
+                "reference": "23fa8fc4ce431956bdbdd149b58d2adb961f91bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/babety/HellaEngineMessage/zipball/463e55740a4748da6c05815b88ade2fd39fecddc",
-                "reference": "463e55740a4748da6c05815b88ade2fd39fecddc",
+                "url": "https://api.github.com/repos/babety/HellaEngineMessage/zipball/23fa8fc4ce431956bdbdd149b58d2adb961f91bd",
+                "reference": "23fa8fc4ce431956bdbdd149b58d2adb961f91bd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0"
+                "php": ">=5.0.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.0"
@@ -95,7 +95,46 @@
                 "rpc",
                 "rpc-message"
             ],
-            "time": "2015-11-30 13:11:49"
+            "time": "2016-08-10 08:28:41"
+        },
+        {
+            "name": "hella-engine/schedule",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "packages/hella-engine/schedule",
+                "reference": "3d489748e4131821a6c857e12262754b5f734e2c",
+                "shasum": null
+            },
+            "require": {
+                "mtdowling/cron-expression": "^1.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "hellaEngine\\schedule\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "peng.zhi",
+                    "email": "babety@163.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "HellaEngine schedule php code .",
+            "keywords": [
+                "php",
+                "php-cron",
+                "php-schedule"
+            ]
         },
         {
             "name": "monolog/monolog",
@@ -169,6 +208,50 @@
                 "psr-3"
             ],
             "time": "2015-03-09 09:58:04"
+        },
+        {
+            "name": "mtdowling/cron-expression",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mtdowling/cron-expression.git",
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cron": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "CRON for PHP: Calculate the next or previous run date and determine if a CRON expression is due",
+            "keywords": [
+                "cron",
+                "schedule"
+            ],
+            "time": "2016-01-26 21:23:30"
         },
         {
             "name": "nikic/php-parser",
@@ -255,16 +338,16 @@
         },
         {
             "name": "qiniu/php-sdk",
-            "version": "v7.0.7",
+            "version": "v7.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/qiniu/php-sdk.git",
-                "reference": "50e3375a7044d5f94de9570ce5966c1b6174bda3"
+                "reference": "d1bca450b56d85beb7ba21f374a47bfeb59c288b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qiniu/php-sdk/zipball/50e3375a7044d5f94de9570ce5966c1b6174bda3",
-                "reference": "50e3375a7044d5f94de9570ce5966c1b6174bda3",
+                "url": "https://api.github.com/repos/qiniu/php-sdk/zipball/d1bca450b56d85beb7ba21f374a47bfeb59c288b",
+                "reference": "d1bca450b56d85beb7ba21f374a47bfeb59c288b",
                 "shasum": ""
             },
             "require": {
@@ -302,20 +385,20 @@
                 "sdk",
                 "storage"
             ],
-            "time": "2016-01-11 13:20:52"
+            "time": "2016-07-19 06:18:08"
         },
         {
             "name": "symfony/class-loader",
-            "version": "v2.8.6",
+            "version": "v2.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/class-loader.git",
-                "reference": "f1cf312c81c7b4f0f11431e6fd37b66890f5e27b"
+                "reference": "22035eb867b21b48f87081f4d981f8495f37d4c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/f1cf312c81c7b4f0f11431e6fd37b66890f5e27b",
-                "reference": "f1cf312c81c7b4f0f11431e6fd37b66890f5e27b",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/22035eb867b21b48f87081f4d981f8495f37d4c2",
+                "reference": "22035eb867b21b48f87081f4d981f8495f37d4c2",
                 "shasum": ""
             },
             "require": {
@@ -355,7 +438,7 @@
             ],
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-30 10:37:34"
+            "time": "2016-07-10 08:00:51"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -470,16 +553,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v2.8.6",
+            "version": "v2.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "0d814e0c1dc07cb688ca2298bbf7b32ace80cee1"
+                "reference": "cdd298b1d45b9882de0905856e89171bf487c6d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/0d814e0c1dc07cb688ca2298bbf7b32ace80cee1",
-                "reference": "0d814e0c1dc07cb688ca2298bbf7b32ace80cee1",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/cdd298b1d45b9882de0905856e89171bf487c6d5",
+                "reference": "cdd298b1d45b9882de0905856e89171bf487c6d5",
                 "shasum": ""
             },
             "require": {
@@ -541,20 +624,20 @@
                 "uri",
                 "url"
             ],
-            "time": "2016-05-03 12:21:46"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v2.8.6",
+            "version": "v2.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "9e24824b2a9a16e17ab997f61d70bc03948e434e"
+                "reference": "35bae476693150728b0eb51647faac82faf9aaca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/9e24824b2a9a16e17ab997f61d70bc03948e434e",
-                "reference": "9e24824b2a9a16e17ab997f61d70bc03948e434e",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/35bae476693150728b0eb51647faac82faf9aaca",
+                "reference": "35bae476693150728b0eb51647faac82faf9aaca",
                 "shasum": ""
             },
             "require": {
@@ -590,20 +673,20 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:54:35"
+            "time": "2016-06-29 05:29:29"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.6",
+            "version": "v2.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940"
+                "reference": "0ceab136f43ed9d3e97b3eea32a7855dc50c121d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
-                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0ceab136f43ed9d3e97b3eea32a7855dc50c121d",
+                "reference": "0ceab136f43ed9d3e97b3eea32a7855dc50c121d",
                 "shasum": ""
             },
             "require": {
@@ -639,7 +722,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-29 19:00:15"
+            "time": "2016-07-17 09:06:15"
         }
     ],
     "packages-dev": [],

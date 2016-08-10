@@ -10,8 +10,9 @@ namespace service;
 
 
 use Common\Util\Common_Util_ReturnVar;
-use Common\Util\Common_Util_Time;
+use Cron\CronExpression;
 use dbs\mall\dbs_mall_manger;
+use hellaEngine\schedule\schedule;
 
 /**
  * 商城接口
@@ -36,6 +37,14 @@ class service_mall extends service_base
     {
         $data = [];
         //interface err_service_mall_getAll
+
+        $cron = CronExpression::factory('*/2 * * * * *');
+        dump($cron->isDue());
+
+        dump(new schedule());
+
+
+        dump($cron->getNextRunDate()->format('Y-m-d H:i:s'));
 
 
 //        $currentTime = explode('.', number_format(Common_Util_Time::getCurrenttime(), 3));
