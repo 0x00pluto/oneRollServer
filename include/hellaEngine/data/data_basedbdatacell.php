@@ -280,11 +280,13 @@ abstract class data_basedbdatacell extends data_basedatacell
             $index_name .= $key . "_";
         }
 
+
         $createResult = $this->db_connect()->ensureIndex($this->get_tablename(),
             $index_name,
             $indexs,
             true,
             $unique);
+
     }
 
 

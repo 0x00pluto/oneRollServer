@@ -37,5 +37,19 @@ class dbs_mall_goodsSellInfo extends dbs_templates_mall_goodsSellInfo
 
     }
 
+    /**
+     * @param $luckNum
+     * @return string
+     */
+    public function getUserId($luckNum)
+    {
+        $details = $this->get_rollDetails();;
+
+        if (isset($details[$luckNum])) {
+            return $details[$luckNum];
+        }
+        return "";
+    }
+
 
 }

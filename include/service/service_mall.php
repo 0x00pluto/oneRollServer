@@ -25,6 +25,9 @@ class service_mall extends service_base
     {
         $this->addFunction('getAll');
         $this->addFunction('buy');
+
+
+        $this->addTestFunction('lottery');
     }
 
     /**
@@ -71,6 +74,20 @@ class service_mall extends service_base
             $this->callerUserInstance,
             $mallId,
             $num);
+    }
+
+
+    /**
+     * @return Common_Util_ReturnVar
+     */
+    public function lottery()
+    {
+        $data = [];
+        //interface err_service_mall_lottery
+
+        dbs_mall_manger::lottery();
+        //code...
+        return Common_Util_ReturnVar::RetSucc($data);
     }
 
 }

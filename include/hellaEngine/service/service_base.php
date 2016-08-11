@@ -94,6 +94,15 @@ abstract class service_base
     }
 
     /**
+     * 添加测试函数
+     * @param $functionName
+     */
+    protected function addTestFunction($functionName)
+    {
+        $this->addFunction($functionName, true);
+    }
+
+    /**
      * 获取导出函数列表
      * @return array
      */

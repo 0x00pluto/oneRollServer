@@ -29,7 +29,7 @@
   "repositories": [
     {
       "type": "path",
-      "url": "packages/hella-engine/schedule"
+      "url": "../../packages/HellaEngineSchedule"
     }
   ]
 }

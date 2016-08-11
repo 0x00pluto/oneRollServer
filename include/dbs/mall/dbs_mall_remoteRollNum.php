@@ -11,6 +11,7 @@ namespace dbs\mall;
 
 use constants\constants_time;
 use dbs\templates\mall\dbs_templates_mall_remoteRollNum;
+use utilphp\util;
 
 class dbs_mall_remoteRollNum extends dbs_templates_mall_remoteRollNum
 {
@@ -19,6 +20,24 @@ class dbs_mall_remoteRollNum extends dbs_templates_mall_remoteRollNum
         $this->set_tablename(self::DBKey_tablename);
         $this->set_primary_key(self::DBKey_id);
         $this->setAutoSave(false);
+    }
+
+
+    /**
+     * 获取时时彩数据
+     * @param $sscId
+     * @return static
+     */
+    static function getCqsscData($sscId)
+    {
+        if (!util::starts_with($sscId, "cqssc_")) {
+            $sscId = "cqssc_" . $sscId;
+        }
+
+//        dump($sscId);
+
+        $ins = self::findOrNew([self::DBKey_id => $sscId]);
+        return $ins;
     }
 
     static function saveCqsscData(array $data)
@@ -65,10 +84,6 @@ class dbs_mall_remoteRollNum extends dbs_templates_mall_remoteRollNum
         $ins->saveToDB();
     }
 
-    static function isExist(array $cqsscData)
-    {
-
-    }
 
     static function getRemoteRollNum()
     {
@@ -117,7 +132,6 @@ class dbs_mall_remoteRollNum extends dbs_templates_mall_remoteRollNum
     static function getRemoteNumOpenTime($sequenceId)
     {
         $offsetSeconds = 0;
-//        $sequenceId = 120;
         if ($sequenceId < 24) {
             $offsetSeconds = $sequenceId * 5 * 60;
         } elseif ($sequenceId == 24) {
@@ -127,10 +141,6 @@ class dbs_mall_remoteRollNum extends dbs_templates_mall_remoteRollNum
         } else {
             $offsetSeconds = 22 * 60 * 60 + ($sequenceId - 96) * 5 * 60;
         }
-
-//        dump([$sequenceId, $offsetSeconds]);
-
-
         return $offsetSeconds;
 
     }

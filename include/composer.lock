@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ef85a9633a2365d67454e738b38cd543",
-    "content-hash": "9494137c7305f117e92430c7930ff536",
+    "hash": "30a35a3873cf4bf47d189c7562217469",
+    "content-hash": "141135c6e8a2f7a45dbf3b7ff584da8d",
     "packages": [
         {
             "name": "brandonwamboldt/utilphp",
@@ -102,8 +102,8 @@
             "version": "1.0.0",
             "dist": {
                 "type": "path",
-                "url": "packages/hella-engine/schedule",
-                "reference": "3d489748e4131821a6c857e12262754b5f734e2c",
+                "url": "../../packages/HellaEngineSchedule",
+                "reference": "ca55c21e5cc2b12e0dab77e8739c15bd6ce64fbd",
                 "shasum": null
             },
             "require": {
@@ -116,7 +116,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "hellaEngine\\schedule\\": ""
+                    "hellaEngine\\schedule\\": "src/hellaEngine/schedule"
                 }
             },
             "license": [

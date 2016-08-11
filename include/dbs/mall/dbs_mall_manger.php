@@ -32,10 +32,11 @@ class dbs_mall_manger
         $data = [];
         //interface err_dbs_mall_manger_getAll
 
+
         typeCheckNumber($start);
         typeCheckNumber($count);
         $allGoods = dbs_mall_onlineGoods::all([], $start, $count);
-
+//        $allGoods = dbs_mall_onlineGoods::allWaitLotteryGoods($start, $count);
         foreach ($allGoods as $Goods) {
             $data[] = $Goods->toArray();
         }
@@ -114,6 +115,46 @@ class dbs_mall_manger
         return dbs_mall_recentBuy::create_with_array(dbs_storage_globalValue::getValue(constants_mall::RECENT_BUY, []));
     }
 
+    /**
+     * 获取最新的重庆时时彩 彩票数据
+     * @return bool
+     */
+    static public function getNewestRemoteRollNum()
+    {
+        $response = Common_Util_Http::http("http://f.apiplus.cn/cqssc-1.json");
+
+        if ($response['http_code'] = 200) {
+            $jsonData = json_decode($response['response'], true);
+            dbs_mall_remoteRollNum::saveCqsscData($jsonData);
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 开奖
+     */
+    static public function lottery()
+    {
+
+        //获取所有需要开奖的商品
+
+        $allGoods = dbs_mall_onlineGoods::allWaitLotteryGoods(0, -1);
+
+
+        foreach ($allGoods as $goods) {
+
+            /**
+             * @var $goods dbs_mall_onlineGoods
+             */
+            if ($goods->lottery()) {
+                //开奖成功
+            } else {
+                //开奖失败
+            }
+        }
+    }
 
     static public function getRemoteRollNum()
     {

@@ -19,3 +19,4 @@ DBType: dataCell
 datas:
     - { name: GoodsId, type: string, comment: 商品ID, access: 0}
     - { name: Codes, type: array, comment: 中奖号, access: 0}
+    - { name: isWin, type: bool, comment: 是否中奖, access: 0}

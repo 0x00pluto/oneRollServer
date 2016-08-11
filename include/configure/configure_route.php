@@ -15,7 +15,11 @@ if (!function_exists('app_route')) {
             "test.tomatofuns.com" => "",
         ];
 
-        if (isset ($routes [$_SERVER ['HTTP_HOST']])) {
+//        echo $routes [$_SERVER ['HTTP_HOST']];
+        if (empty($_SERVER ['HTTP_HOST'])) {
+            $_SERVER ['HTTP_HOST'] = "oneroll.tomatofuns.com";
+            C(configure_constants::APP_NAMESPACE, "");
+        } elseif (isset ($routes [$_SERVER ['HTTP_HOST']])) {
             C(configure_constants::APP_NAMESPACE, $routes [$_SERVER ['HTTP_HOST']]);
         } else {
             throw(new RuntimeException("no found app route:" . $_SERVER ['HTTP_HOST']));

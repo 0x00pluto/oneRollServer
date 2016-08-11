@@ -20,5 +20,8 @@ datas:
     - { name: cqsscId, type: string, comment: 重庆时时彩开奖ID, access: 0}
     - { name: rollTime, type: int, comment: 抽奖时间, access: 0}
     - { name: recentBuy, type: array, comment: 最后50个购买者信息, access: 0}
-    - { name: cqsscData, type: array, comment: 重庆时时彩信息, access: 0}
+    - { name: codeA, type: int, comment: 最近购买所有时间戳的和, access: 0}
+    - { name: codeB, type: int, comment: 重庆时时彩开奖号码, access: 0}
     - { name: luckNum, type: int, comment: 中奖ID, access: 0}
+    - { name: luckUserId, type: array, comment: 中奖者用户ID, access: 0}
+    - { name: luckUserInfo, type: array, comment: 中奖用户信息, access: 0}

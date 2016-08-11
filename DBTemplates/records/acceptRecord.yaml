@@ -1,8 +1,8 @@
 #数据说明:
-className: deactive
+className: acceptRecords
 DBType: globalDB
 # parent: 
-TableName: records_deactive
+TableName: records_acceptRecords
 #数据类型
 #playerDB:寄生于用户本身的数据 需要继承使用
 #globalDB:全局DB 需要继承使用
@@ -10,7 +10,7 @@ TableName: records_deactive
 #
 # - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
 #name:字段名称
-#type:支持数据类型 int=0 string="" array=[] bool=false
+#type:支持数据类型 int=0 string="" array=[] bool=false mixed=none
 #access: 0 默认为0 ,0:可读写 1:只读 2:只写 3:内部访问
 #comment:为字段注释
 #defaultValue:默认值
@@ -19,4 +19,7 @@ TableName: records_deactive
 datas:
     - { name: userid, type: string, comment: 用户ID, access: 0}
     - { name: goodsId, type: string, comment: 货物ID, access: 0}
-    - { name: recordData, type: array, comment: 开奖记录(key=>goodsId value=>recordData), access: 0}
+    - { name: status, type: int, comment: 状态, access: 0}
+    - { name: acceptRecordUserData, type: array, comment: 领奖用户信息, access: 0}
+    - { name: acceptRecordTransferData, type: array, comment: 物流信息, access: 0}
+    - { name: acceptRecordSignIn, type: array, comment: 物品签收数据, access: 0}

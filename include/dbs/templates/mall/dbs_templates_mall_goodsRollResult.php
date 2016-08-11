@@ -171,49 +171,94 @@ class dbs_templates_mall_goodsRollResult extends super
         $this->set_defaultkeyandvalue ( self::DBKey_recentBuy, [] );
     }
     /**
-     * 重庆时时彩信息
+     * 最近购买所有时间戳的和
      *
      * @var
      */
-    const DBKey_cqsscData = "cqsscData";
+    const DBKey_codeA = "codeA";
 
 	/**
-	 * 获取 重庆时时彩信息
-	 * @return array
+	 * 获取 最近购买所有时间戳的和
+	 * @return int
 	 */
-	public function get_cqsscData()
+	public function get_codeA()
 	{
-		return $this->getdata ( self::DBKey_cqsscData );
+		return $this->getdata ( self::DBKey_codeA );
 	}
 
 	/**
-	 * 设置 重庆时时彩信息
+	 * 设置 最近购买所有时间戳的和
 	 *
-	 * @param array $value
+	 * @param int $value
 	 * @return $this
 	 */
-	public function set_cqsscData($value)
+	public function set_codeA($value)
 	{
-		$this->setdata ( self::DBKey_cqsscData, $value );
+		$this->setdata ( self::DBKey_codeA, intval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 重庆时时彩信息
-     * 设置为 []
+     * 重置 最近购买所有时间戳的和
+     * 设置为 0
      * @return $this
      */
-    public function reset_cqsscData()
+    public function reset_codeA()
     {
-        return $this->reset_defaultValue(self::DBKey_cqsscData);
+        return $this->reset_defaultValue(self::DBKey_codeA);
     }
 
     /**
-     * 设置 重庆时时彩信息 默认值
+     * 设置 最近购买所有时间戳的和 默认值
      */
-    protected function _set_defaultvalue_cqsscData()
+    protected function _set_defaultvalue_codeA()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_cqsscData, [] );
+        $this->set_defaultkeyandvalue ( self::DBKey_codeA, 0 );
+    }
+    /**
+     * 重庆时时彩开奖号码
+     *
+     * @var
+     */
+    const DBKey_codeB = "codeB";
+
+	/**
+	 * 获取 重庆时时彩开奖号码
+	 * @return int
+	 */
+	public function get_codeB()
+	{
+		return $this->getdata ( self::DBKey_codeB );
+	}
+
+	/**
+	 * 设置 重庆时时彩开奖号码
+	 *
+	 * @param int $value
+	 * @return $this
+	 */
+	public function set_codeB($value)
+	{
+		$this->setdata ( self::DBKey_codeB, intval($value) );
+		return $this;
+	}
+
+	/**
+     * 重置 重庆时时彩开奖号码
+     * 设置为 0
+     * @return $this
+     */
+    public function reset_codeB()
+    {
+        return $this->reset_defaultValue(self::DBKey_codeB);
+    }
+
+    /**
+     * 设置 重庆时时彩开奖号码 默认值
+     */
+    protected function _set_defaultvalue_codeB()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_codeB, 0 );
     }
     /**
      * 中奖ID
@@ -260,6 +305,96 @@ class dbs_templates_mall_goodsRollResult extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_luckNum, 0 );
     }
+    /**
+     * 中奖者用户ID
+     *
+     * @var
+     */
+    const DBKey_luckUserId = "luckUserId";
+
+	/**
+	 * 获取 中奖者用户ID
+	 * @return array
+	 */
+	public function get_luckUserId()
+	{
+		return $this->getdata ( self::DBKey_luckUserId );
+	}
+
+	/**
+	 * 设置 中奖者用户ID
+	 *
+	 * @param array $value
+	 * @return $this
+	 */
+	public function set_luckUserId($value)
+	{
+		$this->setdata ( self::DBKey_luckUserId, $value );
+		return $this;
+	}
+
+	/**
+     * 重置 中奖者用户ID
+     * 设置为 []
+     * @return $this
+     */
+    public function reset_luckUserId()
+    {
+        return $this->reset_defaultValue(self::DBKey_luckUserId);
+    }
+
+    /**
+     * 设置 中奖者用户ID 默认值
+     */
+    protected function _set_defaultvalue_luckUserId()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_luckUserId, [] );
+    }
+    /**
+     * 中奖用户信息
+     *
+     * @var
+     */
+    const DBKey_luckUserInfo = "luckUserInfo";
+
+	/**
+	 * 获取 中奖用户信息
+	 * @return array
+	 */
+	public function get_luckUserInfo()
+	{
+		return $this->getdata ( self::DBKey_luckUserInfo );
+	}
+
+	/**
+	 * 设置 中奖用户信息
+	 *
+	 * @param array $value
+	 * @return $this
+	 */
+	public function set_luckUserInfo($value)
+	{
+		$this->setdata ( self::DBKey_luckUserInfo, $value );
+		return $this;
+	}
+
+	/**
+     * 重置 中奖用户信息
+     * 设置为 []
+     * @return $this
+     */
+    public function reset_luckUserInfo()
+    {
+        return $this->reset_defaultValue(self::DBKey_luckUserInfo);
+    }
+
+    /**
+     * 设置 中奖用户信息 默认值
+     */
+    protected function _set_defaultvalue_luckUserInfo()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_luckUserInfo, [] );
+    }
 
 
     /**
@@ -283,10 +418,16 @@ class dbs_templates_mall_goodsRollResult extends super
         $this->_set_defaultvalue_rollTime();
         //设置 最后50个购买者信息 默认值
         $this->_set_defaultvalue_recentBuy();
-        //设置 重庆时时彩信息 默认值
-        $this->_set_defaultvalue_cqsscData();
+        //设置 最近购买所有时间戳的和 默认值
+        $this->_set_defaultvalue_codeA();
+        //设置 重庆时时彩开奖号码 默认值
+        $this->_set_defaultvalue_codeB();
         //设置 中奖ID 默认值
         $this->_set_defaultvalue_luckNum();
+        //设置 中奖者用户ID 默认值
+        $this->_set_defaultvalue_luckUserId();
+        //设置 中奖用户信息 默认值
+        $this->_set_defaultvalue_luckUserInfo();
 
     }
 }

@@ -125,6 +125,51 @@ class dbs_templates_records_recordData extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_Codes, [] );
     }
+    /**
+     * 是否中奖
+     *
+     * @var
+     */
+    const DBKey_isWin = "isWin";
+
+	/**
+	 * 获取 是否中奖
+	 * @return bool
+	 */
+	public function get_isWin()
+	{
+		return $this->getdata ( self::DBKey_isWin );
+	}
+
+	/**
+	 * 设置 是否中奖
+	 *
+	 * @param bool $value
+	 * @return $this
+	 */
+	public function set_isWin($value)
+	{
+		$this->setdata ( self::DBKey_isWin, boolval($value) );
+		return $this;
+	}
+
+	/**
+     * 重置 是否中奖
+     * 设置为 false
+     * @return $this
+     */
+    public function reset_isWin()
+    {
+        return $this->reset_defaultValue(self::DBKey_isWin);
+    }
+
+    /**
+     * 设置 是否中奖 默认值
+     */
+    protected function _set_defaultvalue_isWin()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_isWin, false );
+    }
 
 
     /**
@@ -146,6 +191,8 @@ class dbs_templates_records_recordData extends super
         $this->_set_defaultvalue_GoodsId();
         //设置 中奖号 默认值
         $this->_set_defaultvalue_Codes();
+        //设置 是否中奖 默认值
+        $this->_set_defaultvalue_isWin();
 
     }
 }

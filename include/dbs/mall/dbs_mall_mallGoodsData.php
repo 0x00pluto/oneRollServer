@@ -10,11 +10,15 @@ namespace dbs\mall;
 
 
 use Common\Util\Common_Util_Guid;
+use Common\Util\Common_Util_ReturnVar;
 use constants\constants_mall;
 use constants\constants_mallGoodsData;
 use dbs\dbs_player;
+use dbs\dbs_role;
+use dbs\filters\dbs_filters_role;
 use dbs\storage\dbs_storage_globalValue;
 use dbs\templates\mall\dbs_templates_mall_mallGoodsData;
+use hellaEngine\utils\runtime\utils_runtime_result;
 
 class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
 {
@@ -91,7 +95,7 @@ class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
 
         $this->set_goodsSellInfo($sellInfo->toArray());
 
-        $this->finishSell();
+//        $this->finishSell();
 
 
         return [$rollCodes];
@@ -138,13 +142,70 @@ class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
 
         $this->set_goodsRollResult($mall_goodsRollResult->toArray());
 
-//        dump([$nextOpenSSCID, $nextOpenFullSSCID, $nextSSCOpenTime, time(),
-//            date('Y-m-d His', $nextOpenTime)]);
+    }
 
-//        dump([strtotime(date('Y-m-d', time())), strtotime("now")]);
+    public function isStatus($status)
+    {
+//        dump([$this->get_status(), $status]);
+        return $this->get_status() == $status;
+    }
 
+    /**
+     * 开奖
+     * @return utils_runtime_result
+     */
+    public function lottery()
+    {
+        $code = utils_runtime_result::createSucc();
 
-//        return
+        if (!$this->isStatus(constants_mallGoodsData::STATUS_WAIT_ROLL)) {
+            return utils_runtime_result::createFail('STATUS_ERROR', "状态错误");
+        }
+
+        //没有销售完毕
+        if (false && $this->get_selloutCount() != $this->get_count()) {
+            return utils_runtime_result::createFail('NOT_SELLOUT',
+                '没有销售完毕');
+        }
+
+        //没有到开奖时间
+        $goodsRollResult = dbs_mall_goodsRollResult::create_with_array($this->get_goodsRollResult());
+        if (time() < $goodsRollResult->get_rollTime()) {
+            return utils_runtime_result::createFail('NOT_REACH_OPEN_TIME', '没有到开奖时间');
+        }
+
+//        dump($goodsRollResult->toArray());
+        //获取时时彩的数据
+        $sscId = $goodsRollResult->get_cqsscId();
+        $sscData = dbs_mall_remoteRollNum::getCqsscData($sscId);
+
+        if ($sscData->exist()) {
+            $goodsRollResult->set_codeB($sscData->get_opencode());
+        }
+
+        $recentBuy = dbs_mall_recentBuy::create_with_array($goodsRollResult->get_recentBuy());
+        $goodsRollResult->set_codeA($recentBuy->getTotalRollTimeSpan());
+
+        $codeA = $goodsRollResult->get_codeA();
+        $codeB = $goodsRollResult->get_codeB();
+        $luckNum = ($codeA + $codeB) % $this->get_selloutCount() + constants_mall::CODE_START;
+
+        $goodsRollResult->set_luckNum($luckNum);
+
+        $goodsSellInfo = dbs_mall_goodsSellInfo::create_with_array($this->get_goodsSellInfo());
+        $luckUserId = $goodsSellInfo->getUserId($luckNum);
+
+        //获奖用户信息
+        $player = dbs_player::newGuestPlayer($luckUserId);
+        $goodsRollResult->set_luckUserId($luckUserId);
+        $goodsRollResult->set_luckUserInfo(dbs_filters_role::getVerySimpleInfo($player));
+
+        $this->set_goodsRollResult($goodsRollResult->toArray());
+
+        $this->set_status(constants_mallGoodsData::STATUS_FINISH);
+//        dump($this->toArray());
+
+        return $code;
     }
 
 }
