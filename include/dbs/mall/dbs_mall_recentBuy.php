@@ -9,6 +9,8 @@
 namespace dbs\mall;
 
 
+use constants\constants_mall;
+use dbs\storage\dbs_storage_globalValue;
 use dbs\templates\mall\dbs_templates_mall_recentBuy;
 
 class dbs_mall_recentBuy extends dbs_templates_mall_recentBuy
@@ -39,5 +41,15 @@ class dbs_mall_recentBuy extends dbs_templates_mall_recentBuy
         }
 
         return $rollTimeSpan;
+    }
+
+    /**
+     * 获取最近的购买
+     * @return static
+     */
+    static function getRecentBuy()
+    {
+        return self::create_with_array(dbs_storage_globalValue::getValue(constants_mall::RECENT_BUY, []));
+
     }
 }

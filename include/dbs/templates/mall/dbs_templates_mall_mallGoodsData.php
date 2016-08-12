@@ -81,184 +81,139 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->set_defaultkeyandvalue ( self::DBKey_id, "" );
     }
     /**
-     * 商品是否有效
+     * 开奖期数
      *
      * @var
      */
-    const DBKey_valid = "valid";
+    const DBKey_goodsPeriod = "goodsPeriod";
 
 	/**
-	 * 获取 商品是否有效
-	 * @return bool
-	 */
-	public function get_valid()
-	{
-		return $this->getdata ( self::DBKey_valid );
-	}
-
-	/**
-	 * 设置 商品是否有效
-	 *
-	 * @param bool $value
-	 * @return $this
-	 */
-	public function set_valid($value)
-	{
-		$this->setdata ( self::DBKey_valid, boolval($value) );
-		return $this;
-	}
-
-	/**
-     * 重置 商品是否有效
-     * 设置为 false
-     * @return $this
-     */
-    public function reset_valid()
-    {
-        return $this->reset_defaultValue(self::DBKey_valid);
-    }
-
-    /**
-     * 设置 商品是否有效 默认值
-     */
-    protected function _set_defaultvalue_valid()
-    {
-        $this->set_defaultkeyandvalue ( self::DBKey_valid, false );
-    }
-    /**
-     * 上架时间
-     *
-     * @var
-     */
-    const DBKey_onlineTime = "onlineTime";
-
-	/**
-	 * 获取 上架时间
+	 * 获取 开奖期数
 	 * @return int
 	 */
-	public function get_onlineTime()
+	public function get_goodsPeriod()
 	{
-		return $this->getdata ( self::DBKey_onlineTime );
+		return $this->getdata ( self::DBKey_goodsPeriod );
 	}
 
 	/**
-	 * 设置 上架时间
+	 * 设置 开奖期数
 	 *
 	 * @param int $value
 	 * @return $this
 	 */
-	public function set_onlineTime($value)
+	public function set_goodsPeriod($value)
 	{
-		$this->setdata ( self::DBKey_onlineTime, intval($value) );
+		$this->setdata ( self::DBKey_goodsPeriod, intval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 上架时间
+     * 重置 开奖期数
      * 设置为 0
      * @return $this
      */
-    public function reset_onlineTime()
+    public function reset_goodsPeriod()
     {
-        return $this->reset_defaultValue(self::DBKey_onlineTime);
+        return $this->reset_defaultValue(self::DBKey_goodsPeriod);
     }
 
     /**
-     * 设置 上架时间 默认值
+     * 设置 开奖期数 默认值
      */
-    protected function _set_defaultvalue_onlineTime()
+    protected function _set_defaultvalue_goodsPeriod()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_onlineTime, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_goodsPeriod, 0 );
     }
     /**
-     * 开始竞拍时间
+     * 商品名称
      *
      * @var
      */
-    const DBKey_startTime = "startTime";
+    const DBKey_goodsName = "goodsName";
 
 	/**
-	 * 获取 开始竞拍时间
-	 * @return int
+	 * 获取 商品名称
+	 * @return string
 	 */
-	public function get_startTime()
+	public function get_goodsName()
 	{
-		return $this->getdata ( self::DBKey_startTime );
+		return $this->getdata ( self::DBKey_goodsName );
 	}
 
 	/**
-	 * 设置 开始竞拍时间
+	 * 设置 商品名称
 	 *
-	 * @param int $value
+	 * @param string $value
 	 * @return $this
 	 */
-	public function set_startTime($value)
+	public function set_goodsName($value)
 	{
-		$this->setdata ( self::DBKey_startTime, intval($value) );
+		$this->setdata ( self::DBKey_goodsName, strval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 开始竞拍时间
-     * 设置为 0
+     * 重置 商品名称
+     * 设置为 ""
      * @return $this
      */
-    public function reset_startTime()
+    public function reset_goodsName()
     {
-        return $this->reset_defaultValue(self::DBKey_startTime);
+        return $this->reset_defaultValue(self::DBKey_goodsName);
     }
 
     /**
-     * 设置 开始竞拍时间 默认值
+     * 设置 商品名称 默认值
      */
-    protected function _set_defaultvalue_startTime()
+    protected function _set_defaultvalue_goodsName()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_startTime, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_goodsName, "" );
     }
     /**
-     * 结束竞拍时间
+     * 库存中的货物ID
      *
      * @var
      */
-    const DBKey_endTime = "endTime";
+    const DBKey_storageGoodsId = "storageGoodsId";
 
 	/**
-	 * 获取 结束竞拍时间
-	 * @return int
+	 * 获取 库存中的货物ID
+	 * @return string
 	 */
-	public function get_endTime()
+	public function get_storageGoodsId()
 	{
-		return $this->getdata ( self::DBKey_endTime );
+		return $this->getdata ( self::DBKey_storageGoodsId );
 	}
 
 	/**
-	 * 设置 结束竞拍时间
+	 * 设置 库存中的货物ID
 	 *
-	 * @param int $value
+	 * @param string $value
 	 * @return $this
 	 */
-	public function set_endTime($value)
+	public function set_storageGoodsId($value)
 	{
-		$this->setdata ( self::DBKey_endTime, intval($value) );
+		$this->setdata ( self::DBKey_storageGoodsId, strval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 结束竞拍时间
-     * 设置为 0
+     * 重置 库存中的货物ID
+     * 设置为 ""
      * @return $this
      */
-    public function reset_endTime()
+    public function reset_storageGoodsId()
     {
-        return $this->reset_defaultValue(self::DBKey_endTime);
+        return $this->reset_defaultValue(self::DBKey_storageGoodsId);
     }
 
     /**
-     * 设置 结束竞拍时间 默认值
+     * 设置 库存中的货物ID 默认值
      */
-    protected function _set_defaultvalue_endTime()
+    protected function _set_defaultvalue_storageGoodsId()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_endTime, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_storageGoodsId, "" );
     }
     /**
      * 商品状态
@@ -306,184 +261,184 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->set_defaultkeyandvalue ( self::DBKey_status, 0 );
     }
     /**
-     * 商品售出数量
+     * 已经销售出去的抽奖次数
      *
      * @var
      */
-    const DBKey_selloutCount = "selloutCount";
+    const DBKey_selloutrollCount = "selloutrollCount";
 
 	/**
-	 * 获取 商品售出数量
+	 * 获取 已经销售出去的抽奖次数
 	 * @return int
 	 */
-	public function get_selloutCount()
+	public function get_selloutrollCount()
 	{
-		return $this->getdata ( self::DBKey_selloutCount );
+		return $this->getdata ( self::DBKey_selloutrollCount );
 	}
 
 	/**
-	 * 设置 商品售出数量
+	 * 设置 已经销售出去的抽奖次数
 	 *
 	 * @param int $value
 	 * @return $this
 	 */
-	public function set_selloutCount($value)
+	public function set_selloutrollCount($value)
 	{
-		$this->setdata ( self::DBKey_selloutCount, intval($value) );
+		$this->setdata ( self::DBKey_selloutrollCount, intval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 商品售出数量
+     * 重置 已经销售出去的抽奖次数
      * 设置为 0
      * @return $this
      */
-    public function reset_selloutCount()
+    public function reset_selloutrollCount()
     {
-        return $this->reset_defaultValue(self::DBKey_selloutCount);
+        return $this->reset_defaultValue(self::DBKey_selloutrollCount);
     }
 
     /**
-     * 设置 商品售出数量 默认值
+     * 设置 已经销售出去的抽奖次数 默认值
      */
-    protected function _set_defaultvalue_selloutCount()
+    protected function _set_defaultvalue_selloutrollCount()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_selloutCount, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_selloutrollCount, 0 );
     }
     /**
-     * 商品总数
+     * 抽奖总次数
      *
      * @var
      */
-    const DBKey_count = "count";
+    const DBKey_rollCount = "rollCount";
 
 	/**
-	 * 获取 商品总数
+	 * 获取 抽奖总次数
 	 * @return int
 	 */
-	public function get_count()
+	public function get_rollCount()
 	{
-		return $this->getdata ( self::DBKey_count );
+		return $this->getdata ( self::DBKey_rollCount );
 	}
 
 	/**
-	 * 设置 商品总数
+	 * 设置 抽奖总次数
 	 *
 	 * @param int $value
 	 * @return $this
 	 */
-	public function set_count($value)
+	public function set_rollCount($value)
 	{
-		$this->setdata ( self::DBKey_count, intval($value) );
+		$this->setdata ( self::DBKey_rollCount, intval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 商品总数
+     * 重置 抽奖总次数
      * 设置为 0
      * @return $this
      */
-    public function reset_count()
+    public function reset_rollCount()
     {
-        return $this->reset_defaultValue(self::DBKey_count);
+        return $this->reset_defaultValue(self::DBKey_rollCount);
     }
 
     /**
-     * 设置 商品总数 默认值
+     * 设置 抽奖总次数 默认值
      */
-    protected function _set_defaultvalue_count()
+    protected function _set_defaultvalue_rollCount()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_count, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_rollCount, 0 );
     }
     /**
-     * 单价
+     * 单次抽奖价格
      *
      * @var
      */
-    const DBKey_price = "price";
+    const DBKey_eachRollPrice = "eachRollPrice";
 
 	/**
-	 * 获取 单价
+	 * 获取 单次抽奖价格
 	 * @return int
 	 */
-	public function get_price()
+	public function get_eachRollPrice()
 	{
-		return $this->getdata ( self::DBKey_price );
+		return $this->getdata ( self::DBKey_eachRollPrice );
 	}
 
 	/**
-	 * 设置 单价
+	 * 设置 单次抽奖价格
 	 *
 	 * @param int $value
 	 * @return $this
 	 */
-	public function set_price($value)
+	public function set_eachRollPrice($value)
 	{
-		$this->setdata ( self::DBKey_price, intval($value) );
+		$this->setdata ( self::DBKey_eachRollPrice, intval($value) );
 		return $this;
 	}
 
 	/**
-     * 重置 单价
+     * 重置 单次抽奖价格
      * 设置为 0
      * @return $this
      */
-    public function reset_price()
+    public function reset_eachRollPrice()
     {
-        return $this->reset_defaultValue(self::DBKey_price);
+        return $this->reset_defaultValue(self::DBKey_eachRollPrice);
     }
 
     /**
-     * 设置 单价 默认值
+     * 设置 单次抽奖价格 默认值
      */
-    protected function _set_defaultvalue_price()
+    protected function _set_defaultvalue_eachRollPrice()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_price, 0 );
+        $this->set_defaultkeyandvalue ( self::DBKey_eachRollPrice, 0 );
     }
     /**
-     * 商品信息
+     * 商品基本信息
      *
      * @var
      */
-    const DBKey_goodsInfo = "goodsInfo";
+    const DBKey_goodsNormalInfo = "goodsNormalInfo";
 
 	/**
-	 * 获取 商品信息
+	 * 获取 商品基本信息
 	 * @return array
 	 */
-	public function get_goodsInfo()
+	public function get_goodsNormalInfo()
 	{
-		return $this->getdata ( self::DBKey_goodsInfo );
+		return $this->getdata ( self::DBKey_goodsNormalInfo );
 	}
 
 	/**
-	 * 设置 商品信息
+	 * 设置 商品基本信息
 	 *
 	 * @param array $value
 	 * @return $this
 	 */
-	public function set_goodsInfo($value)
+	public function set_goodsNormalInfo($value)
 	{
-		$this->setdata ( self::DBKey_goodsInfo, $value );
+		$this->setdata ( self::DBKey_goodsNormalInfo, $value );
 		return $this;
 	}
 
 	/**
-     * 重置 商品信息
+     * 重置 商品基本信息
      * 设置为 []
      * @return $this
      */
-    public function reset_goodsInfo()
+    public function reset_goodsNormalInfo()
     {
-        return $this->reset_defaultValue(self::DBKey_goodsInfo);
+        return $this->reset_defaultValue(self::DBKey_goodsNormalInfo);
     }
 
     /**
-     * 设置 商品信息 默认值
+     * 设置 商品基本信息 默认值
      */
-    protected function _set_defaultvalue_goodsInfo()
+    protected function _set_defaultvalue_goodsNormalInfo()
     {
-        $this->set_defaultkeyandvalue ( self::DBKey_goodsInfo, [] );
+        $this->set_defaultkeyandvalue ( self::DBKey_goodsNormalInfo, [] );
     }
     /**
      * 商品信息
@@ -594,24 +549,22 @@ class dbs_templates_mall_mallGoodsData extends super
         $this->_set_defaultvalue_dataTemplateType();
         //设置 商品ID 默认值
         $this->_set_defaultvalue_id();
-        //设置 商品是否有效 默认值
-        $this->_set_defaultvalue_valid();
-        //设置 上架时间 默认值
-        $this->_set_defaultvalue_onlineTime();
-        //设置 开始竞拍时间 默认值
-        $this->_set_defaultvalue_startTime();
-        //设置 结束竞拍时间 默认值
-        $this->_set_defaultvalue_endTime();
+        //设置 开奖期数 默认值
+        $this->_set_defaultvalue_goodsPeriod();
+        //设置 商品名称 默认值
+        $this->_set_defaultvalue_goodsName();
+        //设置 库存中的货物ID 默认值
+        $this->_set_defaultvalue_storageGoodsId();
         //设置 商品状态 默认值
         $this->_set_defaultvalue_status();
-        //设置 商品售出数量 默认值
-        $this->_set_defaultvalue_selloutCount();
-        //设置 商品总数 默认值
-        $this->_set_defaultvalue_count();
-        //设置 单价 默认值
-        $this->_set_defaultvalue_price();
-        //设置 商品信息 默认值
-        $this->_set_defaultvalue_goodsInfo();
+        //设置 已经销售出去的抽奖次数 默认值
+        $this->_set_defaultvalue_selloutrollCount();
+        //设置 抽奖总次数 默认值
+        $this->_set_defaultvalue_rollCount();
+        //设置 单次抽奖价格 默认值
+        $this->_set_defaultvalue_eachRollPrice();
+        //设置 商品基本信息 默认值
+        $this->_set_defaultvalue_goodsNormalInfo();
         //设置 商品信息 默认值
         $this->_set_defaultvalue_goodsSellInfo();
         //设置 商品抽奖信息 默认值

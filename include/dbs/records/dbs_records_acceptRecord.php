@@ -64,5 +64,21 @@ class dbs_records_acceptRecord extends dbs_templates_records_acceptRecords
 
         return $ins;
     }
+
+    /**
+     * 获取用户的获奖订单
+     * @param $userid
+     * @param int $start
+     * @param int $count
+     * @return static[]
+     */
+    static function getAll($userid, $start = -1, $count = 2)
+    {
+        $records = self::all([
+            self::DBKey_userid => $userid
+        ], $start, $count);
+
+        return $records;
+    }
 }
 

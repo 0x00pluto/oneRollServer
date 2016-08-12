@@ -22,6 +22,21 @@ class dbs_mall_goodsSellInfoDetail extends dbs_templates_mall_goodsSellInfoDetai
         $this->set_primary_key([self::DBKey_id]);
         $this->set_tablename(self::DBKey_tablename);
         $this->setAutoSave(false);
+
+        $this->ensureIndex(
+            [
+                self::DBKey_userid => 1,
+            ]);
+
+        $this->ensureIndex([
+            self::DBKey_userid => 1,
+            self::DBKey_mallGoodsId => 1
+        ]);
+
+        $this->ensureIndex([
+            self::DBKey_rollCode => 1,
+            self::DBKey_mallGoodsId => 1
+        ]);
     }
 
 
@@ -54,5 +69,21 @@ class dbs_mall_goodsSellInfoDetail extends dbs_templates_mall_goodsSellInfoDetai
         $currentTime = explode('.', number_format(Common_Util_Time::getCurrenttime(), 3));
         $date = new \DateTime();
         return intval($date->format("His") . end($currentTime));
+    }
+
+    /**
+     * @param $goodsId
+     * @param $rollCode
+     * @return static
+     */
+    public static function getSellDetailByRollCode($goodsId, $rollCode)
+    {
+        $ins = self::findOrNew(
+            [
+                self::DBKey_mallGoodsId => $goodsId,
+                self::DBKey_rollCode => $rollCode
+            ]);
+
+        return $ins;
     }
 }

@@ -18,4 +18,5 @@ TableName: mall_onlineGoods
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
     - { name: id, type: string, comment: 商品ID, access: 0}
+    - { name: storageGoodsId, type: string, comment: 库存中的货物ID, access: 0}
     - { name: mallGoodsData, type: array, comment: 商品数据, access: 0}

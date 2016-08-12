@@ -87,6 +87,51 @@ abstract class dbs_templates_mall_onlineGoods extends super
         $this->set_defaultkeyandvalue ( self::DBKey_id, "" );
     }
     /**
+     * 库存中的货物ID
+     *
+     * @var
+     */
+    const DBKey_storageGoodsId = "storageGoodsId";
+
+	/**
+	 * 获取 库存中的货物ID
+	 * @return string
+	 */
+	public function get_storageGoodsId()
+	{
+		return $this->getdata ( self::DBKey_storageGoodsId );
+	}
+
+	/**
+	 * 设置 库存中的货物ID
+	 *
+	 * @param string $value
+	 * @return $this
+	 */
+	public function set_storageGoodsId($value)
+	{
+		$this->setdata ( self::DBKey_storageGoodsId, strval($value) );
+		return $this;
+	}
+
+	/**
+     * 重置 库存中的货物ID
+     * 设置为 ""
+     * @return $this
+     */
+    public function reset_storageGoodsId()
+    {
+        return $this->reset_defaultValue(self::DBKey_storageGoodsId);
+    }
+
+    /**
+     * 设置 库存中的货物ID 默认值
+     */
+    protected function _set_defaultvalue_storageGoodsId()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_storageGoodsId, "" );
+    }
+    /**
      * 商品数据
      *
      * @var
@@ -149,6 +194,8 @@ abstract class dbs_templates_mall_onlineGoods extends super
         $this->_set_defaultvalue_dataTemplateType();
         //设置 商品ID 默认值
         $this->_set_defaultvalue_id();
+        //设置 库存中的货物ID 默认值
+        $this->_set_defaultvalue_storageGoodsId();
         //设置 商品数据 默认值
         $this->_set_defaultvalue_mallGoodsData();
 

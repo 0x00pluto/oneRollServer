@@ -1,8 +1,8 @@
 #数据说明:
-className: mallGoodsData
-DBType: dataCell
+className: storageGoods
+DBType: globalDB
 # parent: 
-#TableName: malls
+TableName: mall_storageGoods
 #数据类型
 #playerDB:寄生于用户本身的数据 需要继承使用
 #globalDB:全局DB 需要继承使用
@@ -10,21 +10,25 @@ DBType: dataCell
 #
 # - { name: albumlist, type: array, defaultValue: 2,readonly: true,comment: 用户相册 }
 #name:字段名称
-#type:支持数据类型 int=0 string="" array=[] bool=false
+#type:支持数据类型 int=0 string="" array=[] bool=false mixed=none
 #access: 0 默认为0 ,0:可读写 1:只读 2:只写 3:内部访问
 #comment:为字段注释
 #defaultValue:默认值
 #
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
-    - { name: id, type: string, comment: 商品ID, access: 0}
-    - { name: goodsPeriod, type: int, comment: 开奖期数, access: 0}
+    - { name: goodsId, type: string, comment: 货物ID, access: 0}
     - { name: goodsName, type: string, comment: 商品名称, access: 0}
-    - { name: storageGoodsId, type: string, comment: 库存中的货物ID, access: 0}
-    - { name: status, type: int, comment: 商品状态, access: 0}
-    - { name: selloutrollCount, type: int, comment: 已经销售出去的抽奖次数, access: 0}
+    - { name: valid, type: bool, comment: 商品是否有效, access: 0}
+    - { name: onlineTime, type: int, comment: 上架时间, access: 0}
+    - { name: isonline, type: bool, comment: 商品是否已经上架, access: 0}
+    - { name: quantity, type: int, comment: 商品总数, access: 0}
     - { name: rollCount, type: int, comment: 抽奖总次数, access: 0}
     - { name: eachRollPrice, type: int, comment: 单次抽奖价格, access: 0}
     - { name: goodsNormalInfo, type: array, comment: 商品基本信息, access: 0}
-    - { name: goodsSellInfo, type: array, comment: 商品信息, access: 0}
-    - { name: goodsRollResult, type: array, comment: 商品抽奖信息, access: 0}
+    - { name: lastProductGoodsId, type: string, comment: 最后一次上线的商品ID, access: 0}
+    - { name: productGoodsPeriod, type: int, comment: 开奖期数, access: 0}
+
+
+
+

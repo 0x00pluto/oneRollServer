@@ -9,6 +9,7 @@
 namespace dbs\mall;
 
 
+use Common\Util\Common_Util_Http;
 use constants\constants_time;
 use dbs\templates\mall\dbs_templates_mall_remoteRollNum;
 use utilphp\util;
@@ -85,11 +86,20 @@ class dbs_mall_remoteRollNum extends dbs_templates_mall_remoteRollNum
     }
 
 
-    static function getRemoteRollNum()
+    /**
+     * 获取最新的重庆时时彩 彩票数据
+     * @return bool
+     */
+    static public function getNewestRemoteRollNum()
     {
-        $ins = new static();
+        $response = Common_Util_Http::http("http://f.apiplus.cn/cqssc-1.json");
 
-        return $ins;
+        if ($response['http_code'] = 200) {
+            $jsonData = json_decode($response['response'], true);
+            self::saveCqsscData($jsonData);
+            return true;
+        }
+        return false;
     }
 
     /**

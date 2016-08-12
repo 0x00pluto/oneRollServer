@@ -24,4 +24,12 @@ class err_dbs_mall_manger_buy
      * 商品数量不足
      */
     const GOODS_NOT_ENOUGH = 2;
+    /**
+     * 钻石不足
+     */
+    const DIAMOND_NOT_ENOUGH = 3;
+    /**
+     * 货物不在销售中
+     */
+    const GOODS_IS_NOT_SELLING = 4;
 }

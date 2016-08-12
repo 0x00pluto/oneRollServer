@@ -9,17 +9,23 @@
 namespace dbs\mall;
 
 
-use Common\Util\Common_Util_Http;
 use Common\Util\Common_Util_ReturnVar;
-use constants\constants_mall;
+use constants\constants_mallGoodsData;
+use constants\constants_moneychangereason;
 use dbs\dbs_player;
+use dbs\dbs_role;
 use dbs\records\dbs_records_active;
 use dbs\records\dbs_records_recordData;
-use dbs\storage\dbs_storage_globalValue;
 use err\err_dbs_mall_manger_buy;
+use hellaEngine\utils\singleton;
 
+/**
+ * Class dbs_mall_manger
+ * @package dbs\mall
+ */
 class dbs_mall_manger
 {
+    use singleton;
 
     /**
      * 获取所有商品
@@ -32,21 +38,70 @@ class dbs_mall_manger
         $data = [];
         //interface err_dbs_mall_manger_getAll
 
-
         typeCheckNumber($start);
         typeCheckNumber($count);
         $allGoods = dbs_mall_onlineGoods::all([], $start, $count);
-//        $allGoods = dbs_mall_onlineGoods::allWaitLotteryGoods($start, $count);
+        foreach ($allGoods as $Goods) {
+            $data[] = $Goods->toArray();
+        }
+        //code...
+        return Common_Util_ReturnVar::RetSucc($data);
+    }
+
+
+    /**
+     * 获取所有销售中的货物
+     * @param int $start
+     * @param int $count
+     * @return Common_Util_ReturnVar
+     */
+    public function getAllSellingGoods($start = 0, $count = -1)
+    {
+        $data = [];
+        typeCheckNumber($start);
+        typeCheckNumber($count);
+
+        $allGoods = dbs_mall_onlineGoods::allSellingGoods($start, $count);
         foreach ($allGoods as $Goods) {
             $data[] = $Goods->toArray();
         }
 
-//        $dbs_mall_recent_buy = self::getRecentBuy();
+        //code...
+        return Common_Util_ReturnVar::RetSucc($data);
+    }
 
-//        dump($dbs_mall_recent_buy->getTotalRollTimeSpan());
-//
-//        self::getRemoteRollNum();
+    /**
+     * @return Common_Util_ReturnVar
+     */
+    public function getAllWaitLotteryGoods()
+    {
+        $data = [];
 
+        $allGoods = dbs_mall_onlineGoods::allWaitLotteryGoods(0, -1);
+        foreach ($allGoods as $Goods) {
+            $data[] = $Goods->toArray();
+        }
+        //code...
+        return Common_Util_ReturnVar::RetSucc($data);
+    }
+
+
+    /**
+     * 获取所有开完奖的货物
+     * @param int $start
+     * @param int $count
+     * @return Common_Util_ReturnVar
+     */
+    public function getAllFinishGoods($start = 0, $count = -1)
+    {
+        $data = [];
+        typeCheckNumber($start);
+        typeCheckNumber($count);
+
+        $allGoods = dbs_mall_onlineGoods::allFinishGoods($start, $count);
+        foreach ($allGoods as $Goods) {
+            $data[] = $Goods->toArray();
+        }
 
         //code...
         return Common_Util_ReturnVar::RetSucc($data);
@@ -64,9 +119,8 @@ class dbs_mall_manger
         $data = [];
         //interface err_dbs_mall_manger_buy
         typeCheckGUID($mallId);
-        typeCheckNumber($num);
+        typeCheckNumber($num, 1);
         //TODO:此处需要锁一下
-        //TODO:需要扣钱
 
         $goods = dbs_mall_onlineGoods::findOrNew(
             [
@@ -78,57 +132,39 @@ class dbs_mall_manger
             "GOODS_NOT_EXISTS");
 
         $mallGoodsData = dbs_mall_mallGoodsData::create_with_array($goods->get_mallGoodsData());
-//        logicErrorCondition($goods->get_mallGoodsData())
 
-        logicErrorCondition($mallGoodsData->get_selloutCount() < $mallGoodsData->get_count(),
+        logicErrorCondition($mallGoodsData->isStatus(constants_mallGoodsData::STATUS_SELLING),
+            err_dbs_mall_manger_buy::GOODS_IS_NOT_SELLING,
+            "GOODS_IS_NOT_SELLING");
+
+        logicErrorCondition($mallGoodsData->get_selloutrollCount() + $num <= $mallGoodsData->get_rollCount(),
             err_dbs_mall_manger_buy::GOODS_NOT_ENOUGH,
             "GOODS_NOT_ENOUGH");
 
-        //创建购买记录
-//        $mallSellInfo = dbs_mall_goodsSellInfo::create_with_array($mallGoodsData->get_goodsSellInfo());
-//        $mallSellInfo->createCode($player, $num);
+        //钻石不足
+        $needDiamonds = $mallGoodsData->get_eachRollPrice() * $num;
+        logicErrorCondition(dbs_role::createWithPlayer($player)->get_diamond() >=
+            $needDiamonds,
+            err_dbs_mall_manger_buy::DIAMOND_NOT_ENOUGH,
+            "DIAMOND_NOT_ENOUGH");
 
-
+        //获取购买产生的中奖号码
         list($rollCodes) = $mallGoodsData->sell($player, $num);
 
+        //创建购买记录
         $record = dbs_records_recordData::create($mallGoodsData, $rollCodes);
-
-//        dump($mallGoodsData->toArray());
-//        dump($rollCodes);
-        //code...
-
-
         $goods->set_mallGoodsData($mallGoodsData->toArray());
         $goods->saveToDB();
 
         dbs_records_active::createWithPlayer($player)->addRecord($record);
+        dbs_role::createWithPlayer($player)->cost_diamond($needDiamonds, constants_moneychangereason::MALL_BUY, $mallId);
+
+        //完成销售,生产下一期的物品
+
+        $nextProductGoodsResult = $goods->productNextOnlineGoods();
+//        dump($nextProductGoodsResult->toArray());
 
         return Common_Util_ReturnVar::RetSucc($data);
-    }
-
-
-    /**
-     * @return dbs_mall_recentBuy
-     */
-    static function getRecentBuy()
-    {
-        return dbs_mall_recentBuy::create_with_array(dbs_storage_globalValue::getValue(constants_mall::RECENT_BUY, []));
-    }
-
-    /**
-     * 获取最新的重庆时时彩 彩票数据
-     * @return bool
-     */
-    static public function getNewestRemoteRollNum()
-    {
-        $response = Common_Util_Http::http("http://f.apiplus.cn/cqssc-1.json");
-
-        if ($response['http_code'] = 200) {
-            $jsonData = json_decode($response['response'], true);
-            dbs_mall_remoteRollNum::saveCqsscData($jsonData);
-            return true;
-        }
-        return false;
     }
 
 
@@ -150,34 +186,12 @@ class dbs_mall_manger
              */
             if ($goods->lottery()) {
                 //开奖成功
+                $goods->saveToDB();
             } else {
                 //开奖失败
             }
         }
     }
 
-    static public function getRemoteRollNum()
-    {
-        $response = Common_Util_Http::http("http://f.apiplus.cn/cqssc-1.json");
-
-        if ($response['http_code'] = 200) {
-            $jsonData = json_decode($response['response'], true);
-            dump($jsonData);
-
-
-            $caipaiData = $jsonData["data"][0];
-
-            dump($caipaiData);
-
-
-            dbs_mall_remoteRollNum::saveCqsscData($jsonData);
-
-        }
-//        dump($response);
-
-
-        dbs_mall_remoteRollNum::getRemoteRollId(time() + 8 * 60 * 60);
-
-    }
 
 }

@@ -28,7 +28,6 @@ class dbs_records_active extends dbs_templates_records_active
     {
         $records = $this->get_records();
 
-//        $dataChange = false;
         foreach ($records as $goodsId => $recordData) {
             $mall_onlineGoods = dbs_mall_onlineGoods::getGoods($goodsId);
             if ($mall_onlineGoods->goodsIsFinish()) {
@@ -52,7 +51,7 @@ class dbs_records_active extends dbs_templates_records_active
                 }
 
 
-//                $this->removeRecord($goodsId);
+                $this->removeRecord($goodsId);
             }
         }
 

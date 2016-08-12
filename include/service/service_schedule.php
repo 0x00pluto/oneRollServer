@@ -11,6 +11,7 @@ namespace service;
 
 use Common\Util\Common_Util_ReturnVar;
 use dbs\mall\dbs_mall_manger;
+use dbs\mall\dbs_mall_remoteRollNum;
 use hellaEngine\schedule\schedule;
 use servicemiddle\servicemiddle_iplimits;
 
@@ -52,21 +53,16 @@ class service_schedule extends service_base
 
         //获取远程彩票数据
         schedule::run('*/1 * * * * *', function () {
-            if (dbs_mall_manger::getNewestRemoteRollNum()) {
+            if (dbs_mall_remoteRollNum::getNewestRemoteRollNum()) {
 
             } else {
 
             }
         });
 
-
         //开奖倒计时
         schedule::run('*/1 * * * * *', function () {
-            if (dbs_mall_manger::getNewestRemoteRollNum()) {
-
-            } else {
-
-            }
+            dbs_mall_manger::lottery();
         });
 
 

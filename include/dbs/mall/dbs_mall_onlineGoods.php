@@ -11,6 +11,7 @@ namespace dbs\mall;
 
 use constants\constants_mallGoodsData;
 use dbs\templates\mall\dbs_templates_mall_onlineGoods;
+use hellaEngine\utils\runtime\utils_runtime_result;
 
 /**
  * Class dbs_mall_onlineGoods
@@ -26,6 +27,7 @@ class dbs_mall_onlineGoods extends dbs_templates_mall_onlineGoods
     protected function configure()
     {
         $this->set_tablename(self::DBKey_tablename);
+        $this->setAutoSave(false);
     }
 
     /**
@@ -59,18 +61,44 @@ class dbs_mall_onlineGoods extends dbs_templates_mall_onlineGoods
     {
         $mallGoodsData = dbs_mall_mallGoodsData::create_with_array($this->get_mallGoodsData());
         return $mallGoodsData->isStatus(constants_mallGoodsData::STATUS_FINISH);
+    }
 
+    /**
+     * 货物完成销售
+     * @return bool
+     */
+    function goodsIsFinishSell()
+    {
+        $mallGoodsData = dbs_mall_mallGoodsData::create_with_array($this->get_mallGoodsData());
+        return !$mallGoodsData->isStatus(constants_mallGoodsData::STATUS_SELLING);
+    }
+
+    /**
+     * 生成下一件在线物品
+     */
+    function productNextOnlineGoods()
+    {
+        if (!$this->goodsIsFinishSell()) {
+            return utils_runtime_result::createFail('goods_is_selling');
+        }
+        $storageGoods = dbs_mall_storageGoods::getGoods($this->get_storageGoodsId());
+        if (!$storageGoods->exist()) {
+            return utils_runtime_result::createFail('storage_goods_not_exists');
+        }
+        return $storageGoods->productOnlineGoods();
     }
 
 
     /**
-     * @param dbs_mall_mallGoodsData $mallGoodsData
+     * @param dbs_mall_storageGoods $goods
      * @return dbs_mall_onlineGoods
      */
-    static function newGoods(dbs_mall_mallGoodsData $mallGoodsData)
+    static function newGoods(dbs_mall_storageGoods $goods)
     {
+        $mallGoodsData = dbs_mall_mallGoodsData::create($goods);
         $ins = new self();
         $ins->set_id($mallGoodsData->get_id());
+        $ins->set_storageGoodsId($goods->get_goodsId());
         $ins->set_mallGoodsData($mallGoodsData->toArray());
         return $ins;
     }
@@ -98,6 +126,19 @@ class dbs_mall_onlineGoods extends dbs_templates_mall_onlineGoods
         $key = self::DBKey_mallGoodsData . "." . dbs_mall_mallGoodsData::DBKey_status;
 
         $goods = self::all([$key => constants_mallGoodsData::STATUS_WAIT_ROLL], $start, $count);
+        return $goods;
+    }
+
+    /**
+     * @param int $start
+     * @param int $count
+     * @return static[]
+     */
+    static function allFinishGoods($start = 0, $count = 10)
+    {
+        $key = self::DBKey_mallGoodsData . "." . dbs_mall_mallGoodsData::DBKey_status;
+
+        $goods = self::all([$key => constants_mallGoodsData::STATUS_FINISH], $start, $count);
         return $goods;
     }
 

@@ -18,6 +18,3 @@ DBType: playerDB
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
     - { name: id, type: string, comment: 商品ID, access: 0}
-    - { name: sellcount, type: int, comment: 已经售出的数量, access: 0}
-    - { name: sellDetails, type: array, comment: 出售详情, access: 0}
-    - { name: rollDetails, type: array, comment: 抽奖详情, access: 0}
