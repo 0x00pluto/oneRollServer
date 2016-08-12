@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "30a35a3873cf4bf47d189c7562217469",
-    "content-hash": "141135c6e8a2f7a45dbf3b7ff584da8d",
+    "hash": "2c003e1a796eae2000bf653f83c33dc8",
+    "content-hash": "439d56ed09e8094ed7feb57eec433e91",
     "packages": [
         {
             "name": "brandonwamboldt/utilphp",
@@ -55,16 +55,16 @@
         },
         {
             "name": "hella-engine/rpc-message",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/babety/HellaEngineMessage.git",
-                "reference": "23fa8fc4ce431956bdbdd149b58d2adb961f91bd"
+                "reference": "11ca76a973aa86d1f67329af2ae62ce9236188ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/babety/HellaEngineMessage/zipball/23fa8fc4ce431956bdbdd149b58d2adb961f91bd",
-                "reference": "23fa8fc4ce431956bdbdd149b58d2adb961f91bd",
+                "url": "https://api.github.com/repos/babety/HellaEngineMessage/zipball/11ca76a973aa86d1f67329af2ae62ce9236188ab",
+                "reference": "11ca76a973aa86d1f67329af2ae62ce9236188ab",
                 "shasum": ""
             },
             "require": {
@@ -95,20 +95,25 @@
                 "rpc",
                 "rpc-message"
             ],
-            "time": "2016-08-10 08:28:41"
+            "time": "2016-08-12 10:27:16"
         },
         {
             "name": "hella-engine/schedule",
             "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/babety/HellaEngineSchedule.git",
+                "reference": "ad72463f83af123202bdbe62df20b5000b2b9f3b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../packages/HellaEngineSchedule",
-                "reference": "ca55c21e5cc2b12e0dab77e8739c15bd6ce64fbd",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/babety/HellaEngineSchedule/zipball/ad72463f83af123202bdbe62df20b5000b2b9f3b",
+                "reference": "ad72463f83af123202bdbe62df20b5000b2b9f3b",
+                "shasum": ""
             },
             "require": {
                 "mtdowling/cron-expression": "^1.1",
-                "php": ">=5.5.9"
+                "php": ">=5.0.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.0"
@@ -119,6 +124,7 @@
                     "hellaEngine\\schedule\\": "src/hellaEngine/schedule"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -134,7 +140,8 @@
                 "php",
                 "php-cron",
                 "php-schedule"
-            ]
+            ],
+            "time": "2016-08-12 09:25:48"
         },
         {
             "name": "monolog/monolog",

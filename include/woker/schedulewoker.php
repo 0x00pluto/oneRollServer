@@ -19,20 +19,18 @@ class schedulewoker
         $message = \hellaEngine\RPCMessage\RPCMessage::createWithRpc('schedule.schedule');
         $message->setMessageBodyProperty('clientVersion', '1.2.0');
 
-        $messageString = \Common\Util\Common_Util_Message::encodeMessage([$message->toArray()]);
+        $messageString = \hellaEngine\RPCMessage\RPCMessageEncode::encodeMessages([$message]);;
 
         echo "success run >> call:" . time() . "\n";
 
         $gateway = new gateway();
         $output = $gateway->processMessage($messageString);
 
-        $returnmessages = \Common\Util\Common_Util_Message::decodeMessage($output);
+        $returnMessages = \hellaEngine\RPCMessage\RPCMessage::decode($output);
 
-        // _dump ( $returnmessages );
-        foreach ($returnmessages as $value) {
-            // _dump ( $value );
-            $command = \Common\Util\Common_Util_Message::Message_getCommand($value);
-            // _dump ( $command );
+        foreach ($returnMessages as $value) {
+
+            $command = $value->getCommand();
             var_dump($command);
         }
 
