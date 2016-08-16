@@ -9,17 +9,19 @@
 namespace Common\Db;
 
 
+use MongoDB\Driver\Cursor;
+
 class Common_Db_MongoQuery
 {
 
     /**
-     * @var \MongoCursor
+     * @var Cursor
      */
     private $queryCursor = null;
 
     /**
      * Common_Db_MongoQuery constructor.
-     * @param \MongoCursor $queryCursor
+     * @param Cursor $queryCursor
      */
     private function __construct($queryCursor)
     {
@@ -27,17 +29,20 @@ class Common_Db_MongoQuery
     }
 
     /**
-     * @param \MongoCursor $queryCursor
      * @return Common_Db_MongoQuery
+     * @param Cursor $queryCursor
      */
-    public static function create(\MongoCursor $queryCursor)
+    public static function create(Cursor $queryCursor)
     {
+        $queryCursor->setTypeMap([
+            'root' => 'array', 'document' => 'array'
+        ]);
         $ins = new Common_Db_MongoQuery($queryCursor);
         return $ins;
     }
 
     /**
-     * @return \MongoCursor
+     * @return Cursor
      */
     public function getCursor()
     {
@@ -50,10 +55,8 @@ class Common_Db_MongoQuery
      */
     public function getResults()
     {
-        $result = [];
-        foreach ($this->queryCursor as $id => $value) {
-            $result [] = $value;
-        }
+        $result = $this->queryCursor->toArray();
+//        var_dump($result);
         return $result;
     }
 }

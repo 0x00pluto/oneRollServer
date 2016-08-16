@@ -2,6 +2,7 @@
 
 namespace Common\Util;
 
+use MongoDB\Driver\Manager;
 use Monolog\ErrorHandler;
 use Monolog\Handler\MongoDBHandler;
 use Monolog\Handler\StreamHandler;
@@ -102,10 +103,14 @@ class Common_Util_Log
     private function __construct()
     {
         // echo 'This is a Constructed method;';
-        
-        $mongo = new \MongoClient (C(\configure_constants::Const_LOGDB_Connection), [
-            'db' => 'logsystem'
-        ]);
+
+
+//        $mongo = new Manager(C(\configure_constants::Const_LOGDB_Connection), [
+//            'db' => 'logsystem'
+//        ]);
+//        $mongo = new \MongoClient (C(\configure_constants::Const_LOGDB_Connection), [
+//            'db' => 'logsystem'
+//        ]);
 
         $rsyslogIP = C(\configure_constants::RSYSLOG_SERVER_IP);
 
@@ -113,6 +118,7 @@ class Common_Util_Log
         $this->_logger->pushHandler(new StreamHandler (C(\configure_constants::LOG_PATH) . 'game_debug.log', Logger::DEBUG));
         $this->_logger->pushHandler(new StreamHandler (C(\configure_constants::LOG_PATH) . 'game_info.log', Logger::INFO));
         $this->_logger->pushHandler(new StreamHandler (C(\configure_constants::LOG_PATH) . 'game_error.log', Logger::ERROR));
+        $this->_logger->pushHandler(new StreamHandler (C(\configure_constants::LOG_PATH) . 'game_error.log', Logger::WARNING));
 
         // 服务器错误日志
         $this->serverErrorLogger = new Logger ('server_Error_Logger');
@@ -124,16 +130,16 @@ class Common_Util_Log
         ErrorHandler::register($this->serverErrorLogger);
 
         // 游戏统计日志
-        $this->gameRecordLogger = new Logger ('gameRecordLogger');
+//        $this->gameRecordLogger = new Logger ('gameRecordLogger');
         // $this->gameRecordLogger->pushHandler ( new RotatingFileHandler ( C ( \configure_constants::LOG_PATH ) . "game_record.log", 0, Logger::INFO ) );
-        $this->gameRecordLogger->pushHandler(new SyslogUdpHandler ($rsyslogIP, 514, LOG_LOCAL0));
-        $this->gameRecordLogger->pushHandler(new MongoDBHandler ($mongo, 'logsystem', 'gameRecordLog'));
+//        $this->gameRecordLogger->pushHandler(new SyslogUdpHandler ($rsyslogIP, 514, LOG_LOCAL0));
+//        $this->gameRecordLogger->pushHandler(new MongoDBHandler ($mongo, 'logsystem', 'gameRecordLog'));
 
         // 客户端崩溃日志
-        $this->crashLogger = new Logger ('clientCrashLog');
-        // $this->crashLogger->pushHandler ( new RotatingFileHandler ( C ( \configure_constants::LOG_PATH ) . "crash.log", 0, Logger::INFO ) );
-        $this->crashLogger->pushHandler(new SyslogUdpHandler ($rsyslogIP, 514, LOG_LOCAL1));
-        $this->crashLogger->pushHandler(new MongoDBHandler ($mongo, 'logsystem', 'crashRecordLog'));
+//        $this->crashLogger = new Logger ('clientCrashLog');
+//         $this->crashLogger->pushHandler ( new RotatingFileHandler ( C ( \configure_constants::LOG_PATH ) . "crash.log", 0, Logger::INFO ) );
+//        $this->crashLogger->pushHandler(new SyslogUdpHandler ($rsyslogIP, 514, LOG_LOCAL1));
+//        $this->crashLogger->pushHandler(new MongoDBHandler ($mongo, 'logsystem', 'crashRecordLog'));
     }
 
     public function __clone()

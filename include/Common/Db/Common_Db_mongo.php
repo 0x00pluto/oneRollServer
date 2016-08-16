@@ -2,53 +2,58 @@
 
 namespace Common\Db;
 
-    /**
-     *
-     * // 欄位字串為
-     * $querys = array("name"=>"shian");
-     *
-     * // 數值等於多少
-     * $querys = array("number"=>7);
-     *
-     * // 數值大於多少
-     * $querys = array("number"=>array('$gt' => 5));
-     *
-     * // 數值大於等於多少
-     * $querys = array("number"=>array('$gte' => 2));
-     *
-     * // 數值小於多少
-     * $querys = array("number"=>array('$lt' => 5));
-     *
-     * // 數值小於等於多少
-     * $querys = array("number"=>array('$lte' => 2));
-     *
-     * // 數值介於多少
-     * $querys = array("number"=>array('$gt' => 1,'$lt' => 9));
-     *
-     * // 數值不等於某值
-     * $querys = array("number"=>array('$ne' => 9));
-     *
-     * // 使用js下查詢條件
-     * $js = "function(){
-     * return this.number == 2 && this.name == 'shian';
-     * }";
-     * $querys = array('$where'=>$js);
-     *
-     * // 欄位等於哪些值
-     * $querys = array("number"=>array('$in' => array(1,2,9)));
-     *
-     * // 欄位不等於哪些值
-     * $querys = array("number"=>array('$nin' => array(1,2,9)));
-     *
-     * // 使用正規查詢
-     * $querys = array("name" => new MongoRegex("/shi/$i"));
-     *
-     * // 或
-     * $querys = array('$or' => array(array('number'=>2),array('number'=>9)));
-     *
-     * @author zhipeng
-     *
-     */
+use MongoDB\BSON\ObjectID;
+use MongoDB\Driver\BulkWrite;
+use MongoDB\Driver\Manager;
+use MongoDB\Driver\Query;
+
+/**
+ *
+ * // 欄位字串為
+ * $querys = array("name"=>"shian");
+ *
+ * // 數值等於多少
+ * $querys = array("number"=>7);
+ *
+ * // 數值大於多少
+ * $querys = array("number"=>array('$gt' => 5));
+ *
+ * // 數值大於等於多少
+ * $querys = array("number"=>array('$gte' => 2));
+ *
+ * // 數值小於多少
+ * $querys = array("number"=>array('$lt' => 5));
+ *
+ * // 數值小於等於多少
+ * $querys = array("number"=>array('$lte' => 2));
+ *
+ * // 數值介於多少
+ * $querys = array("number"=>array('$gt' => 1,'$lt' => 9));
+ *
+ * // 數值不等於某值
+ * $querys = array("number"=>array('$ne' => 9));
+ *
+ * // 使用js下查詢條件
+ * $js = "function(){
+ * return this.number == 2 && this.name == 'shian';
+ * }";
+ * $querys = array('$where'=>$js);
+ *
+ * // 欄位等於哪些值
+ * $querys = array("number"=>array('$in' => array(1,2,9)));
+ *
+ * // 欄位不等於哪些值
+ * $querys = array("number"=>array('$nin' => array(1,2,9)));
+ *
+ * // 使用正規查詢
+ * $querys = array("name" => new MongoRegex("/shi/$i"));
+ *
+ * // 或
+ * $querys = array('$or' => array(array('number'=>2),array('number'=>9)));
+ *
+ * @author zhipeng
+ *
+ */
 
 // MongoDB基本使用
 
@@ -429,7 +434,7 @@ namespace Common\Db;
 class Common_Db_mongo
 {
     /**
-     *
+     * @var Manager
      */
     private $_db_ins;
 
@@ -441,7 +446,8 @@ class Common_Db_mongo
 
     function __construct($connectInfo, $options = [])
     {
-        $this->_db_ins = new \MongoClient ($connectInfo, $options);
+
+        $this->_db_ins = new Manager ($connectInfo, $options);
 //        dump($connectInfo);
 //        dump($options);
 //        dump($this->_db_ins);
@@ -459,6 +465,16 @@ class Common_Db_mongo
     }
 
     /**
+     * 获取连接字符
+     * @param $tableName
+     * @return string
+     */
+    protected function getCollection($tableName)
+    {
+        return $this->currentDBName . "." . $tableName;
+    }
+
+    /**
      * 插入数据
      *
      * @param string $tablename
@@ -467,22 +483,16 @@ class Common_Db_mongo
      *            数据
      * @param bool $async
      *            是否异步插入
-     * @return boolean
+     * @return \MongoDB\Driver\WriteResult
      */
     function insert($tablename, $data_arr, $async = false)
     {
-//        dump_stack();
-//        dump([$tablename, $data_arr]);
-        $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
-        try {
-            $result = $collection->insert($data_arr, array(
-                'fsync' => $async
-            ));
-            // 'w' => 1
-        } catch (\MongoDuplicateKeyException $e) {
-            return false;
-        }
-        return true;
+
+        $bulk = new BulkWrite();
+        $bulk->insert($data_arr);
+        $result = $this->_db_ins->executeBulkWrite($this->getCollection($tablename),
+            $bulk);
+        return $result;
     }
 
     /**
@@ -498,19 +508,25 @@ class Common_Db_mongo
      *            没有记录是否自动插入
      * @param string $operate
      *            '$set' or '$inc'
-     * @return [type] [description]
+     * @return \MongoDB\Driver\WriteResult
      */
     function update($tablename, $data_arr, $where, $autoInsert = false, $operate = '$set')
     {
 //        unset($data_arr['_id']);
 //        dump([$tablename, $data_arr, $where]);
-        $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
-        $result = $collection->update($where, array(
-            $operate => $data_arr
-        ), [
-            'upsert' => $autoInsert,
-            'multiple' => true
-        ]);
+
+        $bulk = new BulkWrite();
+        $bulk->update($where,
+            [
+                $operate => $data_arr
+            ],
+            [
+                'upsert' => $autoInsert,
+                'multiple' => true
+            ]);
+        $result = $this->_db_ins->executeBulkWrite($this->getCollection($tablename),
+            $bulk);
+
 
         return $result;
     }
@@ -522,12 +538,14 @@ class Common_Db_mongo
      *            表名
      * @param string $where
      *            条件
-     * @return array
+     * @return \MongoDB\Driver\WriteResult
      */
     function delete($tablename, $where)
     {
-        $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
-        $result = $collection->remove($where);
+        $bulk = new BulkWrite();
+        $bulk->delete($where);
+        $result = $this->_db_ins->executeBulkWrite($this->getCollection($tablename),
+            $bulk);
         return $result;
     }
 
@@ -581,29 +599,37 @@ class Common_Db_mongo
                                 $sortArray = array(),
                                 $skip = -1)
     {
-        $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
-        $cursor = $collection->find($where);
+        $options = [
 
+        ];
         /**
          * 限制返回数量
          */
+
         if ($limit != -1) {
-            $cursor->limit($limit);
+            $options['limit'] = $limit;
         }
         if ($skip != -1) {
-            $cursor->skip($skip);
+            $options['skip'] = $skip;
         }
-        // 过滤字段
-        $fieldfilter = array();
-        foreach ($fields as $field) {
-            $fieldfilter [$field] = true;
-        }
-        $cursor->fields($fieldfilter);
         /**
          * 排序
          */
-        $cursor->sort($sortArray);
+        $options['sort'] = $sortArray;
 
+        // 过滤字段
+        $fieldfilter = [];
+        foreach ($fields as $field) {
+            $fieldfilter [$field] = 1;
+        }
+        if (!empty($fieldfilter)) {
+            $options['projection'] = $fieldfilter;
+        }
+
+//        dump([$tablename, $options]);
+        $query = new Query($where, $options);
+        $cursor = $this->_db_ins->executeQuery($this->currentDBName . "." . $tablename,
+            $query);
         return Common_Db_MongoQuery::create($cursor);
     }
 
@@ -618,7 +644,7 @@ class Common_Db_mongo
      */
     function count($tablename, $where = array())
     {
-        return $this->queryCursor($tablename, $where)->getCursor()->count();
+        return count($this->queryCursor($tablename, $where)->getCursor()->toArray());
     }
 
     /**
@@ -628,19 +654,10 @@ class Common_Db_mongo
      */
     function getAutoIncreaseId($key)
     {
-        $collection = $this->_db_ins->selectCollection($this->currentDBName, "counters");
-        $ret = $collection->findAndModify(
-            ["_id" => $key],
-            [
-                '$inc' => ["seq" => 1]
-            ],
-            null,
-            [
-                'new' => true,
-                'upsert' => true
-            ]
-        );
-        return $ret['seq'];
+
+        $ret = $this->query('counters', ["_id" => $key], [], 1);
+        $this->update('counters', ["seq" => 1], ["_id" => $key], true, '$inc');
+        return empty($ret) ? 1 : current($ret)['seq'];
     }
 
     /**
@@ -660,15 +677,15 @@ class Common_Db_mongo
     function ensureIndex($tablename, $indexName, $indexs, $isBackground = true, $unique = false)
     {
 //        return true;
-        $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
-        $indexCondition = array(
-            "background" => $isBackground,
-            "unique" => $unique,
-            "name" => $indexName
-        );
-        $ret = $collection->createIndex($indexs, $indexCondition);
+//        $collection = $this->_db_ins->selectCollection($this->currentDBName, $tablename);
+//        $indexCondition = array(
+//            "background" => $isBackground,
+//            "unique" => $unique,
+//            "name" => $indexName
+//        );
+//        $ret = $collection->createIndex($indexs, $indexCondition);
 //        dump([$tablename, $indexName, $ret]);
-        return $ret;
+        return [];
     }
 
     /**
@@ -685,11 +702,11 @@ class Common_Db_mongo
      * mongo主键
      *
      * @param string $value
-     * @return \MongoId
+     * @return ObjectID
      */
     static function id($value = NULL)
     {
-        return new \MongoId ($value);
+        return new ObjectID($value);
     }
 
     const CHECK_DATA_RETCODE_SUCC = 0;

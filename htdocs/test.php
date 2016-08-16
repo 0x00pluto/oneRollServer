@@ -127,13 +127,17 @@ function __registerError()
             echo($er);
         }
     });
-    set_error_handler(function ($a, $b, $c, $d) use ($ar) {
-        if ($a != 8 && $a != 8192 && $a) {
-            $er = $ar [$a] . $a . ': ' . $b . ' => ' . $c . ' line:' . $d . ' ' . date('Y-m-d H:i:s') . "n<br>";
-            // error_log ( $er, 3, '/tmp/php_error.log' );
-            // _dump ( $ar );
-            echo($er);
+    set_error_handler(function ($errno, $errstr, $errfile, $errline) use ($ar) {
+        switch ($errno) {
+            case E_ERROR:
+            case E_WARNING:
+            case E_NOTICE:
+            case E_PARSE:
+                $er = $ar [$errno] . $errno . ': ' . $errstr . ' => ' . $errfile . ' line:' . $errline . ' ' . date('Y-m-d H:i:s') . "n<br>";
+                echo($er);
+                break;
         }
+
     }, E_ALL ^ E_NOTICE);
 }
 

@@ -19,6 +19,10 @@ use dbs\mall\dbs_mall_storageGoodsManager;
  */
 class service_storageGoodsManager extends service_base
 {
+    function isNeedLogin()
+    {
+        return false;
+    }
 
 
     protected function configureFunctions()

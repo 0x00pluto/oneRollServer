@@ -589,8 +589,8 @@ abstract class data_basedbdatacell extends data_basedatacell
             //更新操作
             $retDetail = $db->update($this->get_tablename(), $saveDatas, $where, false);
 //            dump($retDetail);
-            $ret = $retDetail['updatedExisting'];
-            if (!$ret) {
+            $ret = $retDetail->getModifiedCount();
+            if ($ret == 0) {
                 //更新失败,继续检测
                 $dbDatas = $db->query($this->get_tablename(), $this->primary_key_query_where());
                 //数据库中存在的原始数据
@@ -628,14 +628,14 @@ abstract class data_basedbdatacell extends data_basedatacell
                         $saveDatas,
                         $this->primary_key_query_where(),
                         false);
-                    $ret = $retDetail['updatedExisting'];
+                    $ret = $retDetail->getModifiedCount();
 
                 }
             }
         } else {
             $ret = $db->insert($this->get_tablename(), $saveDatas, false);
             //设置数据存在
-            if ($ret) {
+            if ($ret->getInsertedCount() > 0) {
                 $this->setExist(true);
                 $this->setLoadedFromDb(true);
                 //insert之后,会返回完整数据,包含_id

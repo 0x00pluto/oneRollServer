@@ -23,6 +23,8 @@ class dbs_serverstatus_manager
         if (!$this->serverBaseStatus->exist()) {
             $this->serverBaseStatus->saveToDB(true);
         }
+
+
     }
 
     public function __clone()
