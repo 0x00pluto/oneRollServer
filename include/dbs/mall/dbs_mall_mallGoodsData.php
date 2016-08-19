@@ -72,6 +72,7 @@ class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
         $sellCount = $this->get_selloutrollCount();
         $rollCodes = $this->createRollCode($sellCount, $num);
 
+
         $this->set_selloutrollCount($sellCount + $num);
 
         //近期购买记录
@@ -129,6 +130,7 @@ class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
     {
         $this->set_status(constants_mallGoodsData::STATUS_WAIT_ROLL);
 
+
         $mall_goodsRollResult = dbs_mall_goodsRollResult::create(dbs_mall_recentBuy::getRecentBuy());
         //冻结目前最后50名的操作数据
 
@@ -142,6 +144,7 @@ class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
         $nextOpenTime = strtotime(date('Y-m-d', time())) + $nextSSCOpenTime + $offsetLotteryTime;
         $nextOpenFullSSCID = sprintf("%s%03d", date("Ymd"), $nextOpenSSCID);
 
+        $mall_goodsRollResult->set_finishTime(time());
         $mall_goodsRollResult->set_cqsscId($nextOpenFullSSCID);
         $mall_goodsRollResult->set_rollTime($nextOpenTime);
 

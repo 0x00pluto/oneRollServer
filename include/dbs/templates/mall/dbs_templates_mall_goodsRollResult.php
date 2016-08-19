@@ -81,6 +81,51 @@ class dbs_templates_mall_goodsRollResult extends super
         $this->set_defaultkeyandvalue ( self::DBKey_cqsscId, "" );
     }
     /**
+     * 购买完成时间
+     *
+     * @var
+     */
+    const DBKey_finishTime = "finishTime";
+
+	/**
+	 * 获取 购买完成时间
+	 * @return int
+	 */
+	public function get_finishTime()
+	{
+		return $this->getdata ( self::DBKey_finishTime );
+	}
+
+	/**
+	 * 设置 购买完成时间
+	 *
+	 * @param int $value
+	 * @return $this
+	 */
+	public function set_finishTime($value)
+	{
+		$this->setdata ( self::DBKey_finishTime, intval($value) );
+		return $this;
+	}
+
+	/**
+     * 重置 购买完成时间
+     * 设置为 0
+     * @return $this
+     */
+    public function reset_finishTime()
+    {
+        return $this->reset_defaultValue(self::DBKey_finishTime);
+    }
+
+    /**
+     * 设置 购买完成时间 默认值
+     */
+    protected function _set_defaultvalue_finishTime()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_finishTime, 0 );
+    }
+    /**
      * 抽奖时间
      *
      * @var
@@ -414,6 +459,8 @@ class dbs_templates_mall_goodsRollResult extends super
         $this->_set_defaultvalue_dataTemplateType();
         //设置 重庆时时彩开奖ID 默认值
         $this->_set_defaultvalue_cqsscId();
+        //设置 购买完成时间 默认值
+        $this->_set_defaultvalue_finishTime();
         //设置 抽奖时间 默认值
         $this->_set_defaultvalue_rollTime();
         //设置 最后50个购买者信息 默认值

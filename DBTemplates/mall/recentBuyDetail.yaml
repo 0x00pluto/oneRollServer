@@ -19,3 +19,7 @@ DBType: dataCell
 datas:
     - { name: tradeId, type: string, comment: 交易ID, access: 0}
     - { name: rollTimeSpan, type: int, comment: 时间戳, access: 0}
+    - { name: tradeTime, type: int, comment: 交易时间, access: 0}
+    - { name: tradeTimeMillisecond, type: int, comment: 交易时间毫秒, access: 0}
+    - { name: tradeUserId, type: string, comment: 交易用户ID, access: 0}
+    - { name: tradeUserInfo, type: array, comment: 交易用户简易信息, access: 0}

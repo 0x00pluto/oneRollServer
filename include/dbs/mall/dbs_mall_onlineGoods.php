@@ -117,6 +117,48 @@ class dbs_mall_onlineGoods extends dbs_templates_mall_onlineGoods
     }
 
     /**
+     * @param $storageGoodsId
+     * @return static[]
+     */
+    static function allSellingGoodsByStorageId($storageGoodsId)
+    {
+        $key = self::DBKey_mallGoodsData . "." . dbs_mall_mallGoodsData::DBKey_status;
+
+        $goods = self::all([
+            $key => constants_mallGoodsData::STATUS_SELLING,
+            self::DBKey_storageGoodsId => $storageGoodsId
+        ]);
+        return $goods;
+    }
+
+    /**
+     * @param int $bigKindId
+     * @param int $start
+     * @param int $count
+     * @return static[]
+     */
+    static function allSellingGoodsByBigKindId($bigKindId, $start = 0, $count = 10)
+    {
+
+        $key = join(".", [
+            self::DBKey_mallGoodsData,
+            dbs_mall_mallGoodsData::DBKey_goodsNormalInfo,
+            dbs_mall_goodsNormalInfo::DBKey_kindBigId
+        ]);
+
+        $statusKey = join(".", [
+            self::DBKey_mallGoodsData,
+            dbs_mall_mallGoodsData::DBKey_status,
+        ]);
+
+        $goods = self::all([
+            $key => $bigKindId,
+            $statusKey => constants_mallGoodsData::STATUS_SELLING
+        ], $start, $count);
+        return $goods;
+    }
+
+    /**
      * @param int $start
      * @param int $count
      * @return static[]
@@ -137,8 +179,32 @@ class dbs_mall_onlineGoods extends dbs_templates_mall_onlineGoods
     static function allFinishGoods($start = 0, $count = 10)
     {
         $key = self::DBKey_mallGoodsData . "." . dbs_mall_mallGoodsData::DBKey_status;
+        $sortKey = join(".",
+            [
+                self::DBKey_mallGoodsData,
+                dbs_mall_mallGoodsData::DBKey_goodsRollResult,
+                dbs_mall_goodsRollResult::DBKey_rollTime
+            ]);
 
-        $goods = self::all([$key => constants_mallGoodsData::STATUS_FINISH], $start, $count);
+        $goods = self::all([$key => constants_mallGoodsData::STATUS_FINISH], $start, $count,
+            [
+                $sortKey => -1
+            ]);
+        return $goods;
+    }
+
+
+    /**
+     * @param $storageId
+     * @param int $start
+     * @param int $count
+     * @return static[]
+     */
+    static function allGoodsByStorageId($storageId, $start = 0, $count = 10)
+    {
+        $key = self::DBKey_storageGoodsId;
+
+        $goods = self::all([$key => $storageId], $start, $count);
         return $goods;
     }
 

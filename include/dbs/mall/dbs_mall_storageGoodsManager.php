@@ -134,6 +134,7 @@ class dbs_mall_storageGoodsManager
             $productResult->get_retcode());
 
 
+
         return Common_Util_ReturnVar::RetSucc($data);
     }
 

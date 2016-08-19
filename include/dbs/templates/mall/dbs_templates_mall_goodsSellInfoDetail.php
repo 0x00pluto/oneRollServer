@@ -222,6 +222,51 @@ abstract class dbs_templates_mall_goodsSellInfoDetail extends super
         $this->set_defaultkeyandvalue ( self::DBKey_selltime, 0 );
     }
     /**
+     * 购买时间毫秒
+     *
+     * @var
+     */
+    const DBKey_selltimeMillisecond = "selltimeMillisecond";
+
+	/**
+	 * 获取 购买时间毫秒
+	 * @return int
+	 */
+	public function get_selltimeMillisecond()
+	{
+		return $this->getdata ( self::DBKey_selltimeMillisecond );
+	}
+
+	/**
+	 * 设置 购买时间毫秒
+	 *
+	 * @param int $value
+	 * @return $this
+	 */
+	public function set_selltimeMillisecond($value)
+	{
+		$this->setdata ( self::DBKey_selltimeMillisecond, intval($value) );
+		return $this;
+	}
+
+	/**
+     * 重置 购买时间毫秒
+     * 设置为 0
+     * @return $this
+     */
+    public function reset_selltimeMillisecond()
+    {
+        return $this->reset_defaultValue(self::DBKey_selltimeMillisecond);
+    }
+
+    /**
+     * 设置 购买时间毫秒 默认值
+     */
+    protected function _set_defaultvalue_selltimeMillisecond()
+    {
+        $this->set_defaultkeyandvalue ( self::DBKey_selltimeMillisecond, 0 );
+    }
+    /**
      * 抽奖时间戳
      *
      * @var
@@ -425,6 +470,8 @@ abstract class dbs_templates_mall_goodsSellInfoDetail extends super
         $this->_set_defaultvalue_sellcount();
         //设置 购买时间 默认值
         $this->_set_defaultvalue_selltime();
+        //设置 购买时间毫秒 默认值
+        $this->_set_defaultvalue_selltimeMillisecond();
         //设置 抽奖时间戳 默认值
         $this->_set_defaultvalue_rolltimeSpan();
         //设置 抽奖码 默认值

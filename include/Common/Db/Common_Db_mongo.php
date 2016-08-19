@@ -479,17 +479,18 @@ class Common_Db_mongo
      *
      * @param string $tablename
      *            表名
-     * @param string $data_arr
+     * @param array $data_arr
      *            数据
      * @param bool $async
      *            是否异步插入
      * @return \MongoDB\Driver\WriteResult
      */
-    function insert($tablename, $data_arr, $async = false)
+    function insert($tablename, &$data_arr, $async = false)
     {
 
         $bulk = new BulkWrite();
-        $bulk->insert($data_arr);
+        $_id = $bulk->insert($data_arr);
+        $data_arr["_id"] = strval($_id);
         $result = $this->_db_ins->executeBulkWrite($this->getCollection($tablename),
             $bulk);
         return $result;

@@ -1,6 +1,6 @@
 #数据说明:
 className: globalValue
-DBType: playerDB
+DBType: globalDB
 # parent: 
 TableName: storage_globalValues
 #数据类型

@@ -10,6 +10,7 @@ namespace dbs\mall;
 
 
 use Common\Util\Common_Util_Guid;
+use dbs\storage\dbs_storage_globalValue;
 use dbs\templates\mall\dbs_templates_mall_storageGoods;
 use hellaEngine\utils\runtime\utils_runtime_result;
 
@@ -81,12 +82,19 @@ class dbs_mall_storageGoods extends dbs_templates_mall_storageGoods
             return utils_runtime_result::createFail('LAST_PRODUCT_GOODS_IS_SELLING');
         }
 
+        $period = dbs_storage_globalValue::getValue("product_Goods_Period", 0);
+        $period++;
+        dbs_storage_globalValue::setValue("product_Goods_Period", $period);
+
+
         //生产货物
-        $this->set_productGoodsPeriod($this->get_productGoodsPeriod() + 1);
+        $this->set_productGoodsPeriod($period);
         $currentOnlineGoods = dbs_mall_onlineGoods::newGoods($this);
         $this->set_isonline(true);
         $this->set_quantity($this->get_quantity() - 1);
         $this->set_lastProductGoodsId($currentOnlineGoods->get_id());
+
+
         $currentOnlineGoods->saveToDB();
         $this->saveToDB();
 

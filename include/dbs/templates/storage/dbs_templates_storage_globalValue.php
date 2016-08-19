@@ -2,7 +2,7 @@
 
 namespace dbs\templates\storage;
 
-use dbs\dbs_baseplayer as super;
+use dbs\dbs_base as super;
 
 /**
  * auto create by gameConsole!!
@@ -131,7 +131,6 @@ abstract class dbs_templates_storage_globalValue extends super
     {
         $this->set_defaultkeyandvalue ( self::DBKey_value, "" );
     }
-
 
     /**
      * @inheritDoc

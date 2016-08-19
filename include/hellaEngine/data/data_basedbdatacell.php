@@ -639,6 +639,7 @@ abstract class data_basedbdatacell extends data_basedatacell
                 $this->setExist(true);
                 $this->setLoadedFromDb(true);
                 //insert之后,会返回完整数据,包含_id
+
                 $this->set_dbid(strval($saveDatas[self::DBKey_dbid]));
             }
         }
@@ -840,15 +841,16 @@ abstract class data_basedbdatacell extends data_basedatacell
      * @param array $where
      * @param int $skip
      * @param int $limit
-     * @return static[]
+     * @param array $sort
+     * @return array
      */
-    public static function all(array $where = [], $skip = -1, $limit = -1)
+    public static function all(array $where = [], $skip = -1, $limit = -1, $sort = [])
     {
         $result = [];
         $db = static::db_connect();
 
         $ins = new static ();
-        $dbResults = $db->queryCursor($ins->get_tablename(), $where, [], $limit, [], $skip)->getResults();
+        $dbResults = $db->queryCursor($ins->get_tablename(), $where, [], $limit, $sort, $skip)->getResults();
 
         foreach ($dbResults as $dbResult) {
             $result [] = self::createWithDB($dbResult);

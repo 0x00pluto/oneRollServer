@@ -44,6 +44,7 @@ class dbs_storage_globalValue extends dbs_templates_storage_globalValue
         $ins = self::findOrNew([self::DBKey_key => $key]);
         $ins->set_key($key);
         $ins->set_value($value);
+
         $ins->saveToDB();
     }
 

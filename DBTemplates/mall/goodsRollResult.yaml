@@ -18,6 +18,7 @@ DBType: dataCell
 #更多信息见 http://redmine.cooking.com/projects/cooking/wiki/数据模板自动生成使用说明#Yaml模板说明
 datas:
     - { name: cqsscId, type: string, comment: 重庆时时彩开奖ID, access: 0}
+    - { name: finishTime, type: int, comment: 购买完成时间, access: 0}
     - { name: rollTime, type: int, comment: 抽奖时间, access: 0}
     - { name: recentBuy, type: array, comment: 最后50个购买者信息, access: 0}
     - { name: codeA, type: int, comment: 最近购买所有时间戳的和, access: 0}

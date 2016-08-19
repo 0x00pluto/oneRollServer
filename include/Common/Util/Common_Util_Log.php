@@ -130,9 +130,9 @@ class Common_Util_Log
         ErrorHandler::register($this->serverErrorLogger);
 
         // 游戏统计日志
-//        $this->gameRecordLogger = new Logger ('gameRecordLogger');
+        $this->gameRecordLogger = new Logger ('gameRecordLogger');
         // $this->gameRecordLogger->pushHandler ( new RotatingFileHandler ( C ( \configure_constants::LOG_PATH ) . "game_record.log", 0, Logger::INFO ) );
-//        $this->gameRecordLogger->pushHandler(new SyslogUdpHandler ($rsyslogIP, 514, LOG_LOCAL0));
+        $this->gameRecordLogger->pushHandler(new SyslogUdpHandler ($rsyslogIP, 514, LOG_LOCAL0));
 //        $this->gameRecordLogger->pushHandler(new MongoDBHandler ($mongo, 'logsystem', 'gameRecordLog'));
 
         // 客户端崩溃日志

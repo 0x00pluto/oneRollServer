@@ -52,23 +52,26 @@ class dbs_mall_goodsSellInfoDetail extends dbs_templates_mall_goodsSellInfoDetai
 
         $ins->set_id(Common_Util_Guid::uuid("TradeCode-"));
         $ins->set_mallGoodsId($mallGoodsId);
+
+        list ($msec, $sec) = explode(" ", microtime());
         $ins->set_selltime(time());
-        $ins->set_rolltimeSpan(self::getRollTimeSpan());
+        $ins->set_selltimeMillisecond(floatval($msec) * 1000);
+
+        $ins->set_rolltimeSpan(self::getRollTimeSpan($ins->get_selltime(), $ins->get_selltimeMillisecond()));
         $ins->set_sellcount(1);
         $ins->set_rollCode($rollCode);
         $ins->set_userid($player->get_userid());
-        $ins->set_userinfo(dbs_filters_role::getNormalInfo($player));
+        $ins->set_userinfo(dbs_filters_role::getVerySimpleInfo($player));
         return $ins;
     }
 
     /**
      * @return int
      */
-    public static function getRollTimeSpan()
+    public static function getRollTimeSpan($second, $millisecond)
     {
-        $currentTime = explode('.', number_format(Common_Util_Time::getCurrenttime(), 3));
         $date = new \DateTime();
-        return intval($date->format("His") . end($currentTime));
+        return intval($date->format("His") . number_format($millisecond, 3));
     }
 
     /**
