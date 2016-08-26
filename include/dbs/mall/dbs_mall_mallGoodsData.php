@@ -138,7 +138,7 @@ class dbs_mall_mallGoodsData extends dbs_templates_mall_mallGoodsData
         $nextOpenSSCID = dbs_mall_remoteRollNum::getRemoteRollId(time() + 8 * 60 * 60 + 90);
 
         //目前接口免费的比较慢,向后偏移6分钟开奖
-        $offsetLotteryTime = 6 * 60;
+        $offsetLotteryTime = 60 * 60;
 
         $nextSSCOpenTime = dbs_mall_remoteRollNum::getRemoteNumOpenTime($nextOpenSSCID);
         $nextOpenTime = strtotime(date('Y-m-d', time())) + $nextSSCOpenTime + $offsetLotteryTime;

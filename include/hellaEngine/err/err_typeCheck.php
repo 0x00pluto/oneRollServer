@@ -50,4 +50,8 @@ class err_typeCheck
      * 字符串不是JSON
      */
     const STRING_NOT_JSON = 20007;
+    /**
+     * 不是数组
+     */
+    const NOT_AN_ARRAY = 20008;
 }

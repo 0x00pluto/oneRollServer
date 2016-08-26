@@ -71,7 +71,7 @@ class dbs_mall_goodsSellInfoDetail extends dbs_templates_mall_goodsSellInfoDetai
     public static function getRollTimeSpan($second, $millisecond)
     {
         $date = new \DateTime();
-        return intval($date->format("His") . number_format($millisecond, 3));
+        return intval($date->format("His") . sprintf("%03d",$millisecond));
     }
 
     /**

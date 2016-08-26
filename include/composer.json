@@ -23,7 +23,7 @@
     "symfony/class-loader": "^2.7",
     "qiniu/php-sdk": "^7.0",
     "symfony/routing": "^2.7",
-    "hella-engine/rpc-message": "^1.0.0",
+    "hella-engine/rpc-message": "^1.0.6",
     "hella-engine/schedule": "^1.0.0"
   }
 }

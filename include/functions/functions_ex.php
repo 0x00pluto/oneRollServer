@@ -156,6 +156,17 @@ if (!function_exists('logicError')) {
     }
 
     /**
+     * @param $value
+     */
+    function typeCheckArray($value)
+    {
+        if (!is_array($value)) {
+            logicError(\hellaEngine\err\err_typeCheck::NOT_AN_ARRAY,
+                'not an array');
+        }
+    }
+
+    /**
      * choice
      * @param $value
      * @param array $Choices

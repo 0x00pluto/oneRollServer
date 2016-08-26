@@ -31,6 +31,7 @@ class service_mall extends service_base
     {
         $this->addFunction('getAll');
         $this->addFunction('getGoodsInfo');
+        $this->addFunction('getGoodsInfos');
         $this->addFunction('getGoodsByStorageId');
 
         $this->addFunction('getAllSellingGoods');
@@ -67,10 +68,36 @@ class service_mall extends service_base
     {
         $data = [];
         //interface err_service_mall_getGoodsInfo
-
+        typeCheckString($goodsId);
         $goodsData = dbs_mall_onlineGoods::getGoods($goodsId);
         if ($goodsData->exist()) {
             $data = $goodsData->toArray();
+        }
+        //code...
+        return Common_Util_ReturnVar::RetSucc($data);
+    }
+
+    /**
+     * 获取一系列商品的详细信息
+     * @param $goodsIds
+     * @return Common_Util_ReturnVar
+     */
+    public function getGoodsInfos($goodsIds)
+    {
+        $data = [];
+
+        typeCheckJsonString($goodsIds);
+        //interface err_service_mall_getGoodsInfos
+
+        $ids = json_decode($goodsIds, true);
+
+        typeCheckArray($ids);
+
+        foreach ($ids as $mallId) {
+            $goodsData = dbs_mall_onlineGoods::getGoods($mallId);
+            if ($goodsData->exist()) {
+                $data[] = $goodsData->toArray();
+            }
         }
         //code...
         return Common_Util_ReturnVar::RetSucc($data);

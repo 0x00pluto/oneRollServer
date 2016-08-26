@@ -3,6 +3,7 @@
 namespace service;
 
 use Common\Util\Common_Util_ReturnVar;
+use dbs\dbs_role;
 
 /**
  * 角色信息接口
@@ -50,12 +51,12 @@ class service_role extends service_base
         );
 
 
-        logicErrorCondition($this->callerUserInstance->db_role()->exist(),
+        logicErrorCondition(dbs_role::createWithPlayer($this->callerUserInstance)->exist(),
             $retCodeArr ['NOT_ROLE_INFO'],
             'NOT_ROLE_INFO',
             $data);
 
-        $data = $this->callerUserInstance->db_role()->toArray();
+        $data = dbs_role::createWithPlayer($this->callerUserInstance)->toArray();
 
         return Common_Util_ReturnVar::RetSucc($data);
     }
@@ -132,12 +133,9 @@ class service_role extends service_base
         $data = array();
         // class err_service_role_setheadiconurl{}
 
-        $role = $this->callerUserInstance->db_role();
+        $role = dbs_role::createWithPlayer($this->callerUserInstance);
         $role->set_headiconurl($url);
 
-        if (!empty ($url)) {
-            $this->callerUserInstance->dbs_friend_recommemd()->set_setheadicon(1);
-        }
         // code
 
         succ:

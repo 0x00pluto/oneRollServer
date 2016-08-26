@@ -382,15 +382,15 @@ class Common_Util_Message implements data_interfaces_serialize
     static function encodeMessage(array $message_arr)
     {
         $compressedData = gzcompress(json_encode($message_arr), 5);
-        $orKey = "";
-        for ($i = 0; $i < self::NOT_OR_KEY_LEN; $i++) {
-            $orKey .= chr(mt_rand(1, 200));
-        }
-        $compressEncodeString = $orKey . $compressedData;
-        for ($i = self::NOT_OR_KEY_LEN; $i < strlen($compressedData) + self::NOT_OR_KEY_LEN; $i++) {
-            $compressEncodeString [$i] = $compressEncodeString [$i - self::NOT_OR_KEY_LEN] ^ $compressEncodeString [$i];
-        }
-        $compressMessage = base64_encode($compressEncodeString);
+//        $orKey = "";
+//        for ($i = 0; $i < self::NOT_OR_KEY_LEN; $i++) {
+//            $orKey .= chr(mt_rand(1, 200));
+//        }
+//        $compressEncodeString = $orKey . $compressedData;
+//        for ($i = self::NOT_OR_KEY_LEN; $i < strlen($compressedData) + self::NOT_OR_KEY_LEN; $i++) {
+//            $compressEncodeString [$i] = $compressEncodeString [$i - self::NOT_OR_KEY_LEN] ^ $compressEncodeString [$i];
+//        }
+        $compressMessage = base64_encode($compressedData);
         return $compressMessage;
     }
 
@@ -408,14 +408,14 @@ class Common_Util_Message implements data_interfaces_serialize
             if ($unBase64 === false) {
                 return null;
             }
-            $unBase64EncodeMessage = $unBase64;
+//            $unBase64EncodeMessage = $unBase64;
+//
+//             解密
+//            for ($i = strlen($unBase64) - 1; $i >= self::NOT_OR_KEY_LEN; $i--) {
+//                $unBase64 [$i] = $unBase64 [$i - self::NOT_OR_KEY_LEN] ^ $unBase64 [$i];
+//            }
 
-            // 解密
-            for ($i = strlen($unBase64) - 1; $i >= self::NOT_OR_KEY_LEN; $i--) {
-                $unBase64 [$i] = $unBase64 [$i - self::NOT_OR_KEY_LEN] ^ $unBase64 [$i];
-            }
-
-            $unBase64 = substr($unBase64, self::NOT_OR_KEY_LEN);
+//            $unBase64 = substr($unBase64, self::NOT_OR_KEY_LEN);
             $messageDatas = gzuncompress($unBase64);
             if ($messageDatas === FALSE) {
                 Common_Util_Log::record_error('decodeMessageError',

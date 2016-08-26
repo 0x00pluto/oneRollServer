@@ -26,10 +26,38 @@ class service_records extends service_base
     {
         $this->addFunction('getActiveRecords');
         $this->addFunction('getDeActiveRecords');
+        $this->addFunction('getRecordsBuyGoodsId');
         $this->addFunction('getAcceptRecords');
 
 
         $this->addFunction('getTradeDetailsByGoods');
+    }
+
+
+    /**
+     * 通过货物ID获取购买记录
+     * @param $goodsId
+     * @return Common_Util_ReturnVar
+     */
+    public function getRecordsBuyGoodsId($goodsId)
+    {
+        $data = [];
+        //interface err_service_records_getActiveRecords
+
+        typeCheckGUID($goodsId);
+
+        $goodsRecordData = dbs_records_active::createWithPlayer($this->callerUserInstance)->getRecordData($goodsId);
+        if (!is_null($goodsRecordData)) {
+            $data = $goodsRecordData->toArray();
+        } else {
+            $recordDatas = dbs_records_deactive::getRecords($this->callerUserInstance, $goodsId);
+            if (!empty($recordDatas)) {
+                foreach ($recordDatas as $recordData) {
+                    $data = $recordData->get_recordData();
+                }
+            }
+        }
+        return Common_Util_ReturnVar::RetSucc($data);
     }
 
     /**
@@ -41,7 +69,8 @@ class service_records extends service_base
         $data = [];
         //interface err_service_records_getActiveRecords
 
-        $data = dbs_records_active::createWithPlayer($this->callerUserInstance)->toArray();
+
+        $data = array_reverse(dbs_records_active::createWithPlayer($this->callerUserInstance)->get_records());
         //code...
         return Common_Util_ReturnVar::RetSucc($data);
     }

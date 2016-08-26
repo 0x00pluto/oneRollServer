@@ -32,3 +32,4 @@ datas:
     - { name: interests, type: string, comment: 兴趣, readonly: false}
     - { name: headiconurl, type: string, comment: 头像链接, readonly: false}
     - { name: zoneid, type: int, comment: 地域id, readonly: false,defaultValue: 1}
+

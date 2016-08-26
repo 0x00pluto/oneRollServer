@@ -69,4 +69,18 @@ class dbs_records_deactive extends dbs_templates_records_deactive
 
         return $records;
     }
+
+    /**
+     * @param dbs_player $player
+     * @param $goodsId
+     * @return dbs_records_deactive[]
+     */
+    public static function getRecord(dbs_player $player, $goodsId)
+    {
+        $records = self::all([self::DBKey_userid => $player->get_userid(),
+            self::DBKey_goodsId => $goodsId]);
+
+        return $records;
+
+    }
 }

@@ -15,6 +15,7 @@ class Common_Util_String
         if (empty ($string)) {
             return 0;
         }
+
         return mb_strlen($string, "UTF-8");
     }
 

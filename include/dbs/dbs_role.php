@@ -161,7 +161,7 @@ class dbs_role extends dbs_templates_role
         if (empty ($roleName)) {
             return false;
         }
-        $length = Common_Util_Configdata::getInstance()->get_global_config_value('ROLE_NAME_MAX_LENGTH')->int_value();
+        $length = 10;//Common_Util_Configdata::getInstance()->get_global_config_value('ROLE_NAME_MAX_LENGTH')->int_value();
         $nameLength = Common_Util_String::utf8_strlen($roleName);
 
         if ($nameOldLength != $nameLength
